@@ -1,16 +1,17 @@
 <script>
-  export let href, DropdownItem = false
+  import { CurrentPath } from '../../store'
+  export let DropdownItem = false, href
 </script>
 
 {#if DropdownItem}
   <li>
-    <a class="dropdown-item" {href}>
+    <a class="dropdown-item {href === $CurrentPath ? "active" : ""}" {href}>
       <slot></slot>
     </a>
   </li>
 {:else}
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" {href}>
+    <a class="nav-link {href === $CurrentPath ? "active" : ""}" aria-current="page" {href}>
       <slot></slot>
     </a>
   </li>

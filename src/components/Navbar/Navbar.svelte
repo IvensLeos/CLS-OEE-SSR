@@ -14,7 +14,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <Item href="/">Dashboard</Item>
         <Item href="/graphs">Graphs</Item>
-        <DropdownItem Title="Capture Production">
+        <DropdownItem Title="Capture Production" Path="/capture/data/">
           <Item DropdownItem href="/capture/data/molding">Molding</Item>
           <Divider />
           <Item DropdownItem href="/capture/data/printing">Printing</Item>
@@ -26,7 +26,7 @@
           <Item DropdownItem href="/capture/data/packing">Packing</Item>
           <Item DropdownItem href="/capture/data/manualpacking">Manual Packing</Item>
         </DropdownItem>
-        <DropdownItem Title="Review Production">
+        <DropdownItem Title="Review Production" Path="/review/data">
           <Item DropdownItem href="/review/data/cryo">Cryo</Item>
           <Divider />
           <Item DropdownItem href="/review/data/tips">Tip's</Item>
