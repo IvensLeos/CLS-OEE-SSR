@@ -4,7 +4,7 @@
 		const url = `/index.json`
 		const response = await fetch(url)
 
-		if (res.ok) {
+		if (response.ok) {
 			return {
 				props: {
 					BusinessOEE: await response.json()
