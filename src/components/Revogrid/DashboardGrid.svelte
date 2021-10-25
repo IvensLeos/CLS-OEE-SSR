@@ -1,7 +1,7 @@
 <script>
   import { beforeUpdate } from 'svelte/internal'
   import ExportToCsvButton from './ExportToCSVButton.svelte'
-  import { Day1, Calculate } from './Hooks'
+  import { Day1, Calculate } from './hooks'
   
   export let Data, Header
 
