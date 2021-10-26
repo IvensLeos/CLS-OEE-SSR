@@ -94,7 +94,6 @@
   })
 </script>
 
-<br>
 <div class="RootContainer">
   <div></div>
   <revo-grid bind:this={Grid} class="CustomGridClass" exporting="true" autocomplete="true" style="height: {57 + (Data.length * 27)}px; align-items: center;">
