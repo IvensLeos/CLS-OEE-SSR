@@ -39,11 +39,29 @@
 		}
 
 		else if (action === "capture") {
+			const URL = `/${action}/data/${param}.json`
+			const Response = await fetch(URL)
+
+			const { MACHINES } = await Response.json()
+
+			const ResolveParam = {
+				molding: "MOLDING",
+				printing: "PRINTING",
+				printingandassembling: "PRINTING & ASSEMBLING",
+				washing: "WASHING",
+				assembling: "ASSEMBLING",
+				assemblingandpacking: "ASSEMBLING & PACKING",
+				packing: "PACKING",
+				manualpacking: "MANUAL PACKING",
+			}
+
 			return {
 				props: {
 					action,
 					param,
-					Params: []
+					Params: {
+						MACHINES
+					}
 				}
 			}
 		}
@@ -51,9 +69,9 @@
 </script>
 
 <script>
+	import NavpillsTab from '../../../../components/Navpills/NavpillsTab.svelte'
 	import ReviewGrid from '../../../../components/Revogrid/ReviewGrid.svelte'
-	import CaptureGrid from '../../../../components/Revogrid/CaptureGrid.svelte'
-	export let action, param, Params
+	export let action, Params
 </script>
 
 {#if action === "review"}
@@ -63,6 +81,5 @@
 		{/if}
 	{/each}
 {:else if action === "capture"}
-	CaptureData - {param}
-	<CaptureGrid />
+	<NavpillsTab Machines={Params.MACHINES} />
 {/if}

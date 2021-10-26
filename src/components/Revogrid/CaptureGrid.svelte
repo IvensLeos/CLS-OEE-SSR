@@ -3,27 +3,45 @@
   import ExportToCsvButton from './ExportToCSVButton.svelte'
   import { Day1, Day2, Calculate } from './hooks'
   
-  export let MachineName, Process, FailureCodes, ScrapCodes, Rates, ServerData
+  export let MachineName, Process, FailureCodes, ScrapCodes, Rates // ServerData
 
   let Grid, Columns, Data
 
   Columns = [
     { prop: "DATETIME", name: "DATETIME", size: 199, readonly: true },
-    { prop: "MACHINE_NAME", name: "MACHINE", cellProperties: ({ model }) => { model.MACHINE_NAME = MachineName }, readonly: true },
-    { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Calculate.Area(model, Rates) }, readonly: true },
+    { prop: "MACHINE_NAME", name: "MACHINE", readonly: true },
+    { prop: "ROOT_AREA", name: "AREA", readonly: true },
     { prop: "ITEM", name: "ITEM" },
-    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Calculate.Rate(model, Rates, Process) }, readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
-    { prop: "SCRAP", name: "SCRAP (EA)", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
+    { prop: "RATE", name: "RATE (PS)", readonly: true },
+    { prop: "PRODUCED", name: "PRODUCED (EA)" },
+    { prop: "SCRAP", name: "SCRAP (EA)" },
     { prop: "SCRAP_COMMENT", name: "SCRAP DEFECT", columnType: "select", source: ScrapCodes },
-    { prop: "TIME_LOST", name: "LOST TIME (MIN)", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) } },
+    { prop: "TIME_LOST", name: "LOST TIME (MIN)" },
     { prop: "TIME_LOST_COMMENT", name: "LOST TIME CODE", columnType: "select", source: FailureCodes },
     { prop: "COMMENTS", name: "COMMENTS" },
-    { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
-    { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
-    { prop: "P", name: "P", size: 69, cellProperties: ({ model }) => { model.P = Calculate.P(model) }, readonly: true },
-    { prop: "OEE", name: "OEE", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, readonly: true },
+    { prop: "Q", name: "Q", size: 69, readonly: true },
+    { prop: "A", name: "A", size: 69, readonly: true },
+    { prop: "P", name: "P", size: 69, readonly: true },
+    { prop: "OEE", name: "OEE", size: 69, readonly: true },
   ]
+
+  // Columns = [
+  //   { prop: "DATETIME", name: "DATETIME", size: 199, readonly: true },
+  //   { prop: "MACHINE_NAME", name: "MACHINE", cellProperties: ({ model }) => { model.MACHINE_NAME = MachineName }, readonly: true },
+  //   { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Calculate.Area(model, Rates) }, readonly: true },
+  //   { prop: "ITEM", name: "ITEM" },
+  //   { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Calculate.Rate(model, Rates, Process) }, readonly: true },
+  //   { prop: "PRODUCED", name: "PRODUCED (EA)", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
+  //   { prop: "SCRAP", name: "SCRAP (EA)", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
+  //   { prop: "SCRAP_COMMENT", name: "SCRAP DEFECT", columnType: "select", source: ScrapCodes },
+  //   { prop: "TIME_LOST", name: "LOST TIME (MIN)", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) } },
+  //   { prop: "TIME_LOST_COMMENT", name: "LOST TIME CODE", columnType: "select", source: FailureCodes },
+  //   { prop: "COMMENTS", name: "COMMENTS" },
+  //   { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
+  //   { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
+  //   { prop: "P", name: "P", size: 69, cellProperties: ({ model }) => { model.P = Calculate.P(model) }, readonly: true },
+  //   { prop: "OEE", name: "OEE", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, readonly: true },
+  // ]
 
   Data = [
     { "DATETIME": `${Day1} 08:00:00 AM`, "MACHINE_NAME": MachineName },

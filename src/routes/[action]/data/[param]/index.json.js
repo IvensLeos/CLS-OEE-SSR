@@ -5,19 +5,19 @@ export async function get(request) {
   try {
     const { action, param } = request.params
 
-    const ResolveParam = {
-      cryo: "CRYO",
-      tips: "TIP'S",
-      mcts: "MCT'S",
-      scts: "SCT'S",
-      cell: "CELL",
-      beaker: "BEAKER",
-      reservoir: "RESERVOIR",
-      ctscorning: "CT'S CORNING",
-      ctsfalcon: "CT'S FALCON",
-    }
-
     if (action === 'review') {
+      const ResolveParam = {
+        cryo: "CRYO",
+        tips: "TIP'S",
+        mcts: "MCT'S",
+        scts: "SCT'S",
+        cell: "CELL",
+        beaker: "BEAKER",
+        reservoir: "RESERVOIR",
+        ctscorning: "CT'S CORNING",
+        ctsfalcon: "CT'S FALCON",
+      }
+
       const Connection = await DatabaseConnection()
       const OEECollection = Connection.Database.collection('oees')
 
@@ -34,9 +34,27 @@ export async function get(request) {
     }
 
     else if (action === 'capture') {
+      const ResolveParam = {
+        molding: "MOLDING",
+        printing: "PRINTING",
+        printingandassembling: "PRINTING & ASSEMBLING",
+        washing: "WASHING",
+        assembling: "ASSEMBLING",
+        assemblingandpacking: "ASSEMBLING & PACKING",
+        packing: "PACKING",
+        manualpacking: "MANUAL PACKING",
+      }
+
+      const Connection = await DatabaseConnection()
+      const MachinesCollection = Connection.Database.collection('machines')
+
+      const PROCESSMACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).toArray()
+
       return {
         status: 200,
-        body: {}
+        body: {
+          MACHINES: PROCESSMACHINES
+        }
       }
     }
   } catch (error) {
