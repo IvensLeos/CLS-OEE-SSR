@@ -13,6 +13,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-vercel": "next",
+    "@sveltejs/adapter-node": "next",
     "dotenv": "^10.0.0",
     "mongodb": "^4.1.3"
   }
