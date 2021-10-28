@@ -4,7 +4,7 @@
   import { Day1, Day2, Calculate } from './hooks'
   import { Rates, FailureCodes, ScrapCodes, CurrentPath } from '../../store'
 
-  export let MachineName, Process // ServerData
+  export let MachineName, Process, ServerData
 
   let Grid, Columns, Data
 
@@ -63,6 +63,22 @@
     { "DATETIME": `${Day2} 06:00:00 AM`, "MACHINE_NAME": MachineName },
     { "DATETIME": `${Day2} 07:00:00 AM`, "MACHINE_NAME": MachineName },
   ]
+
+  const MergeDataFromDB = () => {
+    for (const LocalData in Data) {
+      const { DATETIME, MACHINE_NAME } = Data[LocalData]
+      let FilterIdentifier = DATETIME?.split(" ").join("") + MACHINE_NAME?.split(" ").join("")
+      let Filter = ServerData?.filter(({ IDENTIFIER }) => IDENTIFIER === FilterIdentifier)
+      
+      if (Filter.length > 0) {
+        const { ITEM, PRODUCED, SCRAP } = Filter[0] || 0
+        const { SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT } = Filter[0] || ""
+        Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT }
+      }
+    }
+  }
+
+  $: MergeDataFromDB()
 
   beforeUpdate(() => {
     if (Grid) {

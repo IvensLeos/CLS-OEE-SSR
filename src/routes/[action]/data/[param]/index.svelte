@@ -42,7 +42,7 @@
 			const URL = `/${action}/data/${param}.json`
 			const Response = await fetch(URL)
 
-			const { MACHINES } = await Response.json()
+			const { MACHINES, OEES } = await Response.json()
 
 			const ResolveParam = {
 				molding: "MOLDING",
@@ -60,7 +60,8 @@
 					action,
 					param,
 					Params: {
-						MACHINES
+						MACHINES,
+						OEES
 					}
 				}
 			}
@@ -81,5 +82,5 @@
 		{/if}
 	{/each}
 {:else if action === "capture"}
-	<NavpillsTab Machines={Params.MACHINES} />
+	<NavpillsTab Machines={Params.MACHINES} ServerData={Params.OEES} />
 {/if}

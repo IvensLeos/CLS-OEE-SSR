@@ -8,6 +8,11 @@ export const NewLT = () => {
   return new Date(Day2 + " 08:00:00 AM")
 }
 
+export const NewOEE = () => {
+  let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
+  return new Date(Day3 + " 00:00:00 AM")
+}
+
 export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
   return [
     {

@@ -1,6 +1,6 @@
 <script>
 	import CaptureGrid from '../Revogrid/CaptureGrid.svelte'
-  export let Machines
+  export let Machines, ServerData
 
   const FormatName = (Name) => Name.replace("'", "").replace("-","").split(" ").join("")
 </script>
@@ -17,7 +17,7 @@
   <div class="tab-content" id="myTabContent">
     {#each Machines as { MACHINE_NAME, PROCESS }, I}
       <div class="tab-pane fade {I === 0 && "show active"}" id="{FormatName(MACHINE_NAME)}" role="tabpanel" aria-labelledby="{FormatName(MACHINE_NAME)}-{I}">
-        <CaptureGrid MachineName={MACHINE_NAME} Process={PROCESS} />
+        <CaptureGrid MachineName={MACHINE_NAME} Process={PROCESS} {ServerData} />
       </div>
     {/each}
   </div>

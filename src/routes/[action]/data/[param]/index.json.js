@@ -1,5 +1,5 @@
 import { DatabaseConnection } from '$lib/db/mongodb'
-import { GenerateAggregation } from '../../../../hooks'
+import { GenerateAggregation, NewOEE } from '../../../../hooks'
 
 export async function get(request) {
   try {
@@ -43,14 +43,17 @@ export async function get(request) {
     }
 
     else if (action === 'capture') {
-      const MachinesCollection = Connection.Database.collection('machines')
-
+      const MachinesCollection = Connection.Database.collection("machines")
       const MACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).toArray()
+
+      const OEESCollection = Connection.Database.collection("oees")
+      const OEES = await OEESCollection.find({ "OEEDATE": NewOEE() }).toArray()
 
       return {
         status: 200,
         body: {
-          MACHINES
+          MACHINES,
+          OEES
         }
       }
     }
@@ -72,10 +75,10 @@ export async function post(request) {
     const OEESCollection = Connection.Database.collection("oees")
     
     const { IDENTIFIER } = OEEDATA
-    const FindAndUpdateOEE = await OEESCollection.findOneAndUpdate({ IDENTIFIER }, { "$set": { ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) } })
+    const FindAndUpdateOEE = await OEESCollection.findOneAndUpdate({ IDENTIFIER }, { "$set": { ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME), OEEDATE: NewOEE() } })
     
     if (!FindAndUpdateOEE.value) {
-      await OEESCollection.insertOne({ ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) })
+      await OEESCollection.insertOne({ ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME), OEEDATE: NewOEE() })
     }
 
     return {
