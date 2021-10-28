@@ -75,7 +75,7 @@ export async function post(request) {
     const FindAndUpdateOEE = await OEESCollection.findOneAndUpdate({ IDENTIFIER }, { "$set": { ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) } })
     
     if (!FindAndUpdateOEE.value) {
-      await OEESCollection.insert({ ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) })
+      await OEESCollection.insertOne({ ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) })
     }
 
     return {
