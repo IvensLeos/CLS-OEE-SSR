@@ -1,5 +1,5 @@
 <script>
-  import { CurrentPath } from '../../store'
+  import { CurrentPath } from '../../store.js'
   export let DropdownItem = false, href
 </script>
 
