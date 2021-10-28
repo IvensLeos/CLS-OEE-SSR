@@ -5,20 +5,29 @@ export async function get(request) {
   try {
     const { action, param } = request.params
 
-    if (action === 'review') {
-      const ResolveParam = {
-        cryo: "CRYO",
-        tips: "TIP'S",
-        mcts: "MCT'S",
-        scts: "SCT'S",
-        cell: "CELL",
-        beaker: "BEAKER",
-        reservoir: "RESERVOIR",
-        ctscorning: "CT'S CORNING",
-        ctsfalcon: "CT'S FALCON",
-      }
+    const ResolveParam = {
+      cryo: "CRYO",
+      tips: "TIP'S",
+      mcts: "MCT'S",
+      scts: "SCT'S",
+      cell: "CELL",
+      beaker: "BEAKER",
+      reservoir: "RESERVOIR",
+      ctscorning: "CT'S CORNING",
+      ctsfalcon: "CT'S FALCON",
+      molding: "MOLDING",
+      printing: "PRINTING",
+      printingandassembling: "PRINTING & ASSEMBLING",
+      washing: "WASHING",
+      assembling: "ASSEMBLING",
+      assemblingandpacking: "ASSEMBLING & PACKING",
+      packing: "PACKING",
+      manualpacking: "MANUAL PACKING",
+    }
 
-      const Connection = await DatabaseConnection()
+    const Connection = await DatabaseConnection()
+
+    if (action === 'review') {
       const OEECollection = Connection.Database.collection('oees')
 
       const OEESBYAREAPROCESSBYMACHINE = await OEECollection.aggregate(GenerateAggregation("$MACHINE_NAME", ResolveParam[param])).toArray()
@@ -34,27 +43,45 @@ export async function get(request) {
     }
 
     else if (action === 'capture') {
-      const ResolveParam = {
-        molding: "MOLDING",
-        printing: "PRINTING",
-        printingandassembling: "PRINTING & ASSEMBLING",
-        washing: "WASHING",
-        assembling: "ASSEMBLING",
-        assemblingandpacking: "ASSEMBLING & PACKING",
-        packing: "PACKING",
-        manualpacking: "MANUAL PACKING",
-      }
-
-      const Connection = await DatabaseConnection()
       const MachinesCollection = Connection.Database.collection('machines')
 
-      const PROCESSMACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).toArray()
+      const MACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).toArray()
 
       return {
         status: 200,
         body: {
-          MACHINES: PROCESSMACHINES
+          MACHINES
         }
+      }
+    }
+  } catch (error) {
+    return {
+      status: 500,
+      body: {
+        error: 'Server error'
+      }
+    }
+  }
+}
+
+export async function post(request) {
+  try {
+    const OEEDATA = JSON.parse(request.body)
+
+    const Connection = await DatabaseConnection()
+    const OEESCollection = Connection.Database.collection("oees")
+    
+    const { IDENTIFIER } = OEEDATA
+    const FindAndUpdateOEE = await OEESCollection.findOneAndUpdate({ IDENTIFIER }, { "$set": { ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) } })
+    
+    if (!FindAndUpdateOEE.value) {
+      await OEESCollection.insert({ ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME) })
+    }
+
+    return {
+      status: 200,
+      body: {
+        Update: "OK"
       }
     }
   } catch (error) {
