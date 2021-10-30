@@ -1,18 +1,18 @@
-import { DatabaseConnection } from '$lib/db/mongodb'
-import { GenerateAggregation } from '../hooks'
+import { DatabaseConnection } from "$lib/db/mongodb"
+import { GenerateAggregation } from "../hooks"
 
 export async function get(request) {
   try {
     const Connection = await DatabaseConnection()
-    const OEECollection = Connection.Database.collection('oees')
+    const OEECollection = Connection.Database.collection("oees")
     
     const OEESBYBU = await OEECollection.aggregate(GenerateAggregation("$ROOT_AREA")).toArray()
     const OEESBYPROCESS = await OEECollection.aggregate(GenerateAggregation("$PROCESS")).toArray()
     const OEESBYPLANT = await OEECollection.aggregate(GenerateAggregation("ALL PLANT")).toArray()
 
-    const RatesCollection = Connection.Database.collection('rates')
-    const FailureCodesCollection = Connection.Database.collection('failurecodes')
-    const ScrapCodesCollection = Connection.Database.collection('scrapcodes')
+    const RatesCollection = Connection.Database.collection("rates")
+    const FailureCodesCollection = Connection.Database.collection("failurecodes")
+    const ScrapCodesCollection = Connection.Database.collection("scrapcodes")
 
     const RATES = await RatesCollection.find({}).toArray()
     const FAILURECODES = await FailureCodesCollection.find({}).map(Key => Key.FAILURECODE).toArray()
@@ -35,7 +35,7 @@ export async function get(request) {
     return {
       status: 500,
       body: {
-        error: 'Server error'
+        error: "Server error"
       }
     }
   }

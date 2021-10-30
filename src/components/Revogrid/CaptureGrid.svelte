@@ -105,7 +105,7 @@
 
   const InsertOrUpdateOEE = async (Data) => {
     try {
-      const InsertOrUpdate = await fetch(`${$CurrentPath}.json`, {
+      await fetch(`${$CurrentPath}.json`, {
         method: "POST",
         body: JSON.stringify(Data)
       })

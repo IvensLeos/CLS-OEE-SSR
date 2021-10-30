@@ -16,3 +16,15 @@ export const Calculate = {
   OEE: (Model) => PercentStyleForOEE(((parseFloat(Model.Q) * parseFloat(Model.A) * parseFloat(Model.P)) / 1000000) || 0),
   ParseInt: (ModelElement) => parseInt(ModelElement) || 0,
 }
+
+export const ConvertJSDateToExcelDate = (Data) => {
+  if (Data.data.data[0].DATETIME) {
+    let InternalData = Data.data.data
+    for (const Row in InternalData) {
+      let FormatedDate = new Date(InternalData[Row].DATETIME)
+      let ExcelDate = 25569.0 + ((FormatedDate.getTime() - (FormatedDate.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24))
+      let DATETIME = ExcelDate.toString().substr(0, 20)
+      InternalData[Row] = { ...InternalData[Row], DATETIME }
+    }
+  }
+}
