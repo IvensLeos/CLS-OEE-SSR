@@ -14,7 +14,7 @@ export const NewOEE = () => {
 }
 
 export const CurrentDate = () => {
-  let Day3 = new Date(Date.now()).toLocaleTimeString("en-US", { timeZone: "America/Chicago" })
+  let Day3 = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
   return Day3
 }
 
