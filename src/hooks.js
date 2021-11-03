@@ -1,15 +1,18 @@
 export const NewGTE = () => {
-  let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
+  // 28800000 - 18000000
+  let Day1 = new Date(Date.now() - 10800000).toLocaleDateString("en-US")
   return new Date(Day1 + " 08:00:00 AM UTC")
 }
 
 export const NewLT = () => {
-  let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US")
+  // 57600000 - 18000000
+  let Day2 = new Date(Date.now() + 39600000).toLocaleDateString("en-US")
   return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
 export const NewOEE = () => {
-  let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
+  // 28800000 - 18000000
+  let Day3 = new Date(Date.now() - 10800000).toLocaleDateString("en-US")
   return new Date(Day3 + " 00:00:00 AM UTC")
 }
 
