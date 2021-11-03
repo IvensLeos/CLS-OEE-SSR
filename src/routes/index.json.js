@@ -1,5 +1,5 @@
 import { DatabaseConnection } from "$lib/db/mongodb"
-import { GenerateAggregation, NewGTE, NewLT, NewOEE } from "../hooks"
+import { GenerateAggregation, NewGTE, NewLT, NewOEE, CurrentDate } from "../hooks"
 
 export async function get(request) {
   try {
@@ -32,8 +32,9 @@ export async function get(request) {
         ServerDates: {
           NewGTE: NewGTE(),
           NewLT: NewLT(),
-          NewOEE: NewOEE()
-        }
+          NewOEE: NewOEE(),
+          CurrentDate: CurrentDate()
+        },
       }
     }
   } catch (err) {

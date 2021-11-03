@@ -13,6 +13,11 @@ export const NewOEE = () => {
   return new Date(Day3 + " 00:00:00 AM")
 }
 
+export const CurrentDate = () => {
+  let Day3 = new Date(Date.now()).toLocaleTimeString("en-US")
+  return Day3
+}
+
 export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
   return [
     {

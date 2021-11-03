@@ -31,7 +31,7 @@
       NewLT: NewLT(),
       NewOEE: NewOEE()
     },
-    ServerDates
+    ServerDates,
   })
 </script>
 
