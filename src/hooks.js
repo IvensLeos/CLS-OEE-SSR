@@ -1,7 +1,7 @@
 export const NewGTE = () => {
   let Day1 = new Date(Date.now() - 46800000).toUTCString()
   Day1 = new Date(Day1.toLocaleString().slice("", -3))
-  Day1 = new Date(Day1).toLocaleDateString("en-US")
+  Day1 = new Date(Day1).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
 
   // let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   return new Date(Day1 + " 08:00:00 AM")
