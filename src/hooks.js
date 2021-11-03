@@ -1,16 +1,16 @@
 export const NewGTE = () => {
   let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
-  return new Date(Day1 + " 08:00:00 AM")
+  return new Date(Day1 + " 08:00:00 AM UTC")
 }
 
 export const NewLT = () => {
   let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US")
-  return new Date(Day2 + " 08:00:00 AM")
+  return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
 export const NewOEE = () => {
   let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
-  return new Date(Day3 + " 00:00:00 AM")
+  return new Date(Day3 + " 00:00:00 AM UTC")
 }
 
 export const CurrentDate = () => {
