@@ -1,5 +1,5 @@
 import { DatabaseConnection } from "$lib/db/mongodb"
-import { GenerateAggregation, NewGTE, NewLT, NewOEE, CurrentDate } from "../hooks"
+import { GenerateAggregation } from "../hooks"
 
 export async function get(request) {
   try {
@@ -28,14 +28,7 @@ export async function get(request) {
         PlantOEE: [ ...ParsedOEE(OEESBYPLANT) ],
         RATES,
         FAILURECODES,
-        SCRAPCODES,
-        ServerDates: {
-          NewGTE: NewGTE(),
-          NewLT: NewLT(),
-          NewOEE: NewOEE(),
-          CurrentDate: CurrentDate(),
-          TimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        },
+        SCRAPCODES
       }
     }
   } catch (err) {

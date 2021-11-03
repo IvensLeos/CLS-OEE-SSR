@@ -5,10 +5,10 @@
     const URL = `/index.json`
 		const Response = await fetch(URL)
 
-    const { RATES, FAILURECODES, SCRAPCODES, ServerDates } = await Response.json()
+    const { RATES, FAILURECODES, SCRAPCODES } = await Response.json()
 
     return {
-      props: { path, RATES, FAILURECODES, SCRAPCODES, ServerDates }
+      props: { path, RATES, FAILURECODES, SCRAPCODES }
     }
   }
 </script>
@@ -16,23 +16,13 @@
 <script>
   import Navbar from '../components/Navbar/Navbar.svelte'
   import { CurrentPath, FailureCodes, Rates, ScrapCodes } from '../store'
-  import { NewGTE, NewLT, NewOEE } from '../hooks'
 
-  export let path, RATES, FAILURECODES, SCRAPCODES, ServerDates
+  export let path, RATES, FAILURECODES, SCRAPCODES
 
   $: CurrentPath.set(path)
   $: Rates.set(RATES)
   $: FailureCodes.set(FAILURECODES)
   $: ScrapCodes.set(SCRAPCODES)
-
-  console.log({
-    ClientDates: {
-      NewGTE: NewGTE(),
-      NewLT: NewLT(),
-      NewOEE: NewOEE()
-    },
-    ServerDates,
-  })
 </script>
 
 <Navbar />
