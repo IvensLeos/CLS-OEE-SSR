@@ -5,7 +5,7 @@ export const NewGTE = () => {
 
   let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") {
-    return new Date(Day1 + " 13:00:00 AM")
+    return new Date(Day1 + " 01:00:00 PM")
   }
   else {
     return new Date(Day1 + " 08:00:00 AM")
