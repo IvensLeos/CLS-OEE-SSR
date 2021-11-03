@@ -1,5 +1,5 @@
 import { DatabaseConnection } from "$lib/db/mongodb"
-import { GenerateAggregation } from "../hooks"
+import { GenerateAggregation, NewGTE, NewLT, NewOEE } from "../hooks"
 
 export async function get(request) {
   try {
@@ -29,6 +29,11 @@ export async function get(request) {
         RATES,
         FAILURECODES,
         SCRAPCODES,
+        ServerDates: {
+          NewGTE: NewGTE(),
+          NewLT: NewLT(),
+          NewOEE: NewOEE()
+        }
       }
     }
   } catch (err) {
