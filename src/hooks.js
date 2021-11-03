@@ -1,15 +1,34 @@
 export const NewGTE = () => {
-  let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  // 18000000 
+  let Day1
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") {
+    Day1 = new Date(Date.now() - 10800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
+  else {
+    Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
   return new Date(Day1 + " 08:00:00 AM")
 }
 
 export const NewLT = () => {
-  let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  let Day2
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") {
+    Day2 = new Date(Date.now() + 39600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
+  else {
+    Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
   return new Date(Day2 + " 08:00:00 AM")
 }
 
 export const NewOEE = () => {
-  let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  let Day3
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") {
+    Day3 = new Date(Date.now() - 10800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
+  else {
+    Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  }
   return new Date(Day3 + " 00:00:00 AM")
 }
 
