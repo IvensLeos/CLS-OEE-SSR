@@ -1,23 +1,20 @@
 export const NewGTE = () => {
-  // 28800000 - 18000000
-  let Day1 = new Date(Date.now() - 10800000).toLocaleDateString("en-US")
-  return new Date(Day1 + " 08:00:00 AM UTC")
+  let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  return new Date(Day1 + " 08:00:00 AM")
 }
 
 export const NewLT = () => {
-  // 57600000 - 18000000
-  let Day2 = new Date(Date.now() + 39600000).toLocaleDateString("en-US")
-  return new Date(Day2 + " 08:00:00 AM UTC")
+  let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  return new Date(Day2 + " 08:00:00 AM")
 }
 
 export const NewOEE = () => {
-  // 28800000 - 18000000
-  let Day3 = new Date(Date.now() - 10800000).toLocaleDateString("en-US")
-  return new Date(Day3 + " 00:00:00 AM UTC")
+  let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+  return new Date(Day3 + " 00:00:00 AM")
 }
 
 export const CurrentDate = () => {
-  let Day3 = new Date(Date.now()).toLocaleTimeString("en-US")
+  let Day3 = new Date(Date.now()).toLocaleTimeString("en-US", { timeZone: "America/Chicago" })
   return Day3
 }
 
