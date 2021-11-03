@@ -16,7 +16,7 @@ export const NewOEE = () => {
   else return new Date(Day3 + " 00:00:00 AM")
 }
 
-export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
+export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA, GTE, LT) => {
   return [
     {
       $addFields: {
@@ -26,10 +26,7 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
     },
     {
       $match: {
-        "DATETIME": {
-          $gte: new Date(NewGTE()),
-          $lt: new Date(NewLT())
-        },
+        "DATETIME": new Date(NewOEE()),
         "ROOT_AREA": MATCH_ROOT_AREA || { $ne: ["IMPOSIBLE_AREA"] }
       }
     },
