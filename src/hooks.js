@@ -1,25 +1,19 @@
 export const NewGTE = () => {
-  // let Day1 = new Date(Date.now() - 46800000).toUTCString()
-  // Day1 = new Date(Day1.toLocaleString().slice("", -3))
-  // Day1 = new Date(Day1).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-
   let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") {
-    return new Date(Day1 + " 01:00:00 PM")
-  }
-  else {
-    return new Date(Day1 + " 08:00:00 AM")
-  }
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day1 + " 01:00:00 PM")
+  else return new Date(Day1 + " 08:00:00 AM")
 }
 
 export const NewLT = () => {
   let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  return new Date(Day2 + " 08:00:00 AM")
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day2 + " 01:00:00 PM")
+  else return new Date(Day2 + " 08:00:00 AM")
 }
 
 export const NewOEE = () => {
   let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  return new Date(Day3 + " 00:00:00 AM")
+  if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day3 + " 05:00:00 AM")
+  else return new Date(Day3 + " 00:00:00 AM")
 }
 
 export const CurrentDate = () => {
