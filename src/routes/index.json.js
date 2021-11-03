@@ -33,7 +33,8 @@ export async function get(request) {
           NewGTE: NewGTE(),
           NewLT: NewLT(),
           NewOEE: NewOEE(),
-          CurrentDate: CurrentDate()
+          CurrentDate: CurrentDate(),
+          TimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
         },
       }
     }
