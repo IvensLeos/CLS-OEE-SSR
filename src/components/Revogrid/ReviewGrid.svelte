@@ -8,16 +8,16 @@
   let Grid, Columns
 
   Columns = [
-    { prop: "ID", name: "MACHINE", order: 'asc', readonly: true },
-    { prop: "ITEM", name: "ITEM", readonly: true },
-    { prop: "RATE", name: "RATE (PS)", readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", readonly: true },
-    { prop: "SCRAP", name: "SCRAP (EA)", readonly: true },
-    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (MIN)", size: 141, readonly: true },
-    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (MIN)", size: 191, readonly: true },
-    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (MIN)", size: 153, readonly: true },
-    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (MIN)", size: 166, readonly: true },
-    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (MIN)", size: 176, readonly: true },
+    { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true },
+    { prop: "ITEM", name: "ITEM", size: 100, readonly: true },
+    { prop: "RATE", name: "RATE (PS)", size: 75, readonly: true },
+    { prop: "PRODUCED", name: "PRODUCED (EA)", size: 90, readonly: true },
+    { prop: "SCRAP", name: "SCRAP (EA)", size: 75, readonly: true },
+    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (MIN)", size: 135, readonly: true },
+    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (MIN)", size: 187, readonly: true },
+    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (MIN)", size: 148, readonly: true },
+    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (MIN)", size: 161, readonly: true },
+    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (MIN)", size: 168, readonly: true },
     { prop: "TAU", name: "TAU", size: 69, cellProperties: ({ model }) => { model.TAU = Calculate.TAU(model) }, readonly: true },
     { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
     { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
@@ -68,11 +68,11 @@
   }
 
   .CustomGridClass {
-    max-width: 1670px;
+    max-width: 1614px;
   }
 
   .ExportButtonAligner {
-    min-width: 1701px;
+    min-width: 1644px;
   }
 
   .Title {

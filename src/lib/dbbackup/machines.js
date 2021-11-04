@@ -638,13 +638,5 @@
     "ACTIVE": true,
     "createdAt": new Date("Mon Oct 25 2021 22:05:43 GMT-0500 (hora de verano central)"),
     "updatedAt": new Date("Mon Oct 25 2021 22:05:43 GMT-0500 (hora de verano central)")
-  },
-  {
-    "_id": new ObjectID("61777040588b172df4da0586"),
-    "MACHINE_NAME": null,
-    "PROCESS": null,
-    "ACTIVE": null,
-    "createdAt": new Date("Mon Oct 25 2021 22:05:43 GMT-0500 (hora de verano central)"),
-    "updatedAt": new Date("Mon Oct 25 2021 22:05:43 GMT-0500 (hora de verano central)")
   }
 ]
