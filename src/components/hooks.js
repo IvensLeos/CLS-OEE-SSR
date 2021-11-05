@@ -1,5 +1,5 @@
-export const Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US")
-export const Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US")
+export const Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+export const Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
 
 export const PercentStyleForOEE = (Value) => {
   if (Value > 1) Value = 1
