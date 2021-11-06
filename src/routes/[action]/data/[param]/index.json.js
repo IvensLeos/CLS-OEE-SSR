@@ -75,6 +75,7 @@ export async function post(request) {
     const OEESCollection = Connection.Database.collection("oees")
     
     const { IDENTIFIER } = OEEDATA
+    
     const FindAndUpdateOEE = await OEESCollection.findOneAndUpdate({ IDENTIFIER }, { "$set": { ...OEEDATA, DATETIME: new Date(OEEDATA.DATETIME), OEEDATE: NewOEE() } })
     
     if (!FindAndUpdateOEE.value) {

@@ -2,21 +2,21 @@ export const NewGTE = () => {
   let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day1 + " 01:00:00 PM")
   // else return new Date(Day1 + " 08:00:00 AM")
-  return new Date(Day1 + " 08:00:00 AM")
+  return new Date(Day1 + " 08:00:00 AM UTC")
 }
 
 export const NewLT = () => {
   let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day2 + " 01:00:00 PM")
   // else return new Date(Day2 + " 08:00:00 AM")
-  return new Date(Day2 + " 08:00:00 AM")
+  return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
 export const NewOEE = () => {
   let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day3 + " 05:00:00 AM")
   // else return new Date(Day3 + " 00:00:00 AM")
-  return new Date(Day3 + " 00:00:00 AM")
+  return new Date(Day3 + " 00:00:00 AM UTC")
 }
 
 export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
@@ -31,7 +31,7 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
       $match: {
         "DATETIME": {
           $gte: new Date(NewGTE()),
-          $lt: new Date(NewLT())
+          $lte: new Date(NewLT())
         },
         "ROOT_AREA": MATCH_ROOT_AREA || { $ne: ["IMPOSIBLE_AREA"] }
       }

@@ -5,7 +5,7 @@
   import { Rates, FailureCodes, ScrapCodes, CurrentPath } from '../../store.js'
 
   export let MachineName, Process, ServerData
-
+  
   let Grid, Columns, Data
 
   const Get = {
@@ -38,30 +38,30 @@
   ]
 
   Data = [
-    { "DATETIME": `${Day1} 08:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 09:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 10:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 11:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 12:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 01:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 02:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 03:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 04:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 05:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 06:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 07:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 08:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 09:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 10:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day1} 11:00:00 PM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 12:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 01:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 02:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 03:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 04:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 05:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 06:00:00 AM`, "MACHINE_NAME": MachineName },
-    { "DATETIME": `${Day2} 07:00:00 AM`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 08:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 09:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 10:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 11:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 12:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 01:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 02:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 03:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 04:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 05:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 06:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 07:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 08:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 09:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 10:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day1} 11:00:00 PM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 12:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 01:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 02:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 03:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 04:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 05:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 06:00:00 AM UTC`, "MACHINE_NAME": MachineName },
+    { "DATETIME": `${Day2} 07:00:00 AM UTC`, "MACHINE_NAME": MachineName },
   ]
 
   const MergeDataFromDB = () => {
