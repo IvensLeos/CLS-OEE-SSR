@@ -72,8 +72,8 @@
       
       if (Filter.length > 0) {
         const { ITEM, PRODUCED, SCRAP } = Filter[0] || 0
-        const { SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT } = Filter[0] || ""
-        Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT }
+        const { SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS } = Filter[0] || ""
+        Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS }
       }
     }
   }
