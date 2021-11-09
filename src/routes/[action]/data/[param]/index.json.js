@@ -44,7 +44,7 @@ export async function get(request) {
 
     else if (action === 'capture') {
       const MachinesCollection = Connection.Database.collection("machines")
-      const MACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).toArray()
+      const MACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[param] }).sort({ "MACHINE_NAME": 1 }).toArray()
 
       const OEESCollection = Connection.Database.collection("oees")
       const OEES = await OEESCollection.find({ "OEEDATE": NewOEE() }).toArray()
