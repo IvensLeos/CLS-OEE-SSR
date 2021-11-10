@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/failurecodes",
+      "handler": "failurecodes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/failurecodes/count",
+      "handler": "failurecodes.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/failurecodes/:id",
+      "handler": "failurecodes.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/failurecodes",
+      "handler": "failurecodes.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/failurecodes/:id",
+      "handler": "failurecodes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/failurecodes/:id",
+      "handler": "failurecodes.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

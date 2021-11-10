@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scrapcodes",
+  "info": {
+    "name": "scrapcodes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SCRAPCODE": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

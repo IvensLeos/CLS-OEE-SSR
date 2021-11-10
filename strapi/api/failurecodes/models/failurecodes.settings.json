@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "failurecodes",
+  "info": {
+    "name": "failurecode",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FAILURECODE": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "machines",
+  "info": {
+    "name": "machine",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "MACHINE_NAME": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "PROCESS": {
+      "type": "string",
+      "required": true
+    },
+    "ACTIVE": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  }
+}

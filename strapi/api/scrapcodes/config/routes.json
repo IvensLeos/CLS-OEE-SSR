@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/scrapcodes",
+      "handler": "scrapcodes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/scrapcodes/count",
+      "handler": "scrapcodes.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/scrapcodes/:id",
+      "handler": "scrapcodes.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/scrapcodes",
+      "handler": "scrapcodes.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/scrapcodes/:id",
+      "handler": "scrapcodes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/scrapcodes/:id",
+      "handler": "scrapcodes.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

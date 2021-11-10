@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rates",
+  "info": {
+    "name": "rates"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ITEM": {
+      "type": "string",
+      "required": true
+    },
+    "MACHINE": {
+      "type": "string",
+      "required": true
+    },
+    "RATE": {
+      "type": "integer",
+      "required": true
+    },
+    "ROOT_AREA": {
+      "type": "string",
+      "required": true
+    },
+    "WORK_CENTER": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

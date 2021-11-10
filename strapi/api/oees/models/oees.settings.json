@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "oees",
+  "info": {
+    "name": "oee",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DATETIME": {
+      "type": "datetime",
+      "required": false
+    },
+    "IDENTIFIER": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "ITEM": {
+      "type": "string",
+      "required": false
+    },
+    "MACHINE_NAME": {
+      "type": "string"
+    },
+    "OEEDATE": {
+      "type": "datetime"
+    },
+    "PROCESS": {
+      "type": "string"
+    },
+    "PRODUCED": {
+      "type": "integer"
+    },
+    "RATE": {
+      "type": "integer"
+    },
+    "ROOT_AREA": {
+      "type": "string"
+    },
+    "SCRAP": {
+      "type": "integer"
+    },
+    "TIME_LOST": {
+      "type": "integer"
+    },
+    "TIME_LOST_COMMENT": {
+      "type": "string"
+    },
+    "COMMENTS": {
+      "type": "text"
+    }
+  }
+}
