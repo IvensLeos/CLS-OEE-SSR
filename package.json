@@ -1,10 +1,10 @@
 {
-  "name": "CLS-OEE-SSR",
+  "name": "cls-oee-ssr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "concurrently \"cd ./strapi && npm install && npm run build\" \"cd ./sveltekit && npm install && npm run build \"",
+    "build": "concurrently \"cd ./strapi && npm install && npm run build\"",
     "start": "concurrently \"cd ./strapi && npm start\" \"cd ./sveltekit && node ./build \""
   },
   "repository": {
