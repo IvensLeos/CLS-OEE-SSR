@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "concurrently \"cd ./strapi && npm i && npm run build\" \"cd ./sveltekit && npm i && npm run build \"",
-    "start": "concurrently \"cd ./strapi && npm start\" \"cd ./sveltekit && node ./build  \""
+    "build": "concurrently \"cd ./strapi && npm install && npm run build\" \"cd ./sveltekit && npm install && npm run build \"",
+    "start": "concurrently \"cd ./strapi && npm start\" \"cd ./sveltekit && node ./build \""
   },
   "repository": {
     "type": "git",
