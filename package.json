@@ -1,0 +1,24 @@
+{
+  "name": "CLS-OEE-SSR",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "concurrently \"cd ./strapi && npm i && npm run build\" \"cd ./sveltekit && npm i && npm run build \"",
+    "start": "concurrently \"cd ./strapi && npm start\" \"cd ./sveltekit && node ./build  \""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvensLeos/CLS-OEE-SSR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvensLeos/CLS-OEE-SSR/issues"
+  },
+  "homepage": "https://github.com/IvensLeos/CLS-OEE-SSR#readme",
+  "dependencies": {
+    "concurrently": "^6.4.0"
+  }
+}

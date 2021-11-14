@@ -10,15 +10,33 @@ export async function get(request) {
     const OEESBYPROCESS = await OEECollection.aggregate(GenerateAggregation("$PROCESS")).toArray()
     const OEESBYPLANT = await OEECollection.aggregate(GenerateAggregation("ALL PLANT")).toArray()
 
-    const RatesCollection = Connection.Database.collection("rates")
-    const FailureCodesCollection = Connection.Database.collection("failurecodes")
-    const ScrapCodesCollection = Connection.Database.collection("scrapcodes")
-
-    const RATES = await RatesCollection.find({}).toArray()
-    const FAILURECODES = await FailureCodesCollection.find({}).map(Key => Key.FAILURECODE).toArray()
-    const SCRAPCODES = await ScrapCodesCollection.find({}).map(Key => Key.SCRAPCODE).toArray()
-
     const ParsedOEE = (Result) => Result.map(OEE => { return { ...OEE, ID: OEE._id } })
+
+    const STRAPI_URL = import.meta.env.VITE_STRAPI_URL
+
+    let Query = JSON.stringify({
+      "query": `{
+        failurecodes(limit: 0) {
+          FAILURECODE
+        }
+        scrapcodes(limit: 0) {
+          SCRAPCODE
+        }
+        rates(limit: 0) {
+          ITEM
+          MACHINE
+          RATE
+          ROOT_AREA
+          WORK_CENTER
+        }
+      }
+    `})
+
+    const GraphQLQuery = await fetch(STRAPI_URL + "graphql", {
+      "method": "POST",
+      "headers": { "content-type": "application/json" },
+      "body": Query
+    }).then(res => res.json())
 
     return {
       status: 200,
@@ -26,9 +44,9 @@ export async function get(request) {
         BusinessOEE: [ ...ParsedOEE(OEESBYBU) ],
         ProcessOEE: [ ...ParsedOEE(OEESBYPROCESS) ],
         PlantOEE: [ ...ParsedOEE(OEESBYPLANT) ],
-        RATES,
-        FAILURECODES,
-        SCRAPCODES
+        RATES: GraphQLQuery.data.rates,
+        FAILURECODES: GraphQLQuery.data.failurecodes.map(key => key.FAILURECODE),
+        SCRAPCODES: GraphQLQuery.data.scrapcodes.map(key => key.SCRAPCODE),
       }
     }
   } catch (err) {

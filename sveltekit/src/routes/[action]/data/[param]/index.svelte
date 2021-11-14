@@ -81,6 +81,7 @@
 			<ReviewGrid {Data} {Area} {Process} />
 		{/if}
 	{/each}
+	<br>
 {:else if action === "capture"}
 	<NavpillsTab Machines={Params.MACHINES} ServerData={Params.OEES} />
 {/if}
