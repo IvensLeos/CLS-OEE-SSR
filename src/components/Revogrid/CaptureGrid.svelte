@@ -9,8 +9,9 @@
   let Grid, Columns, Data
 
   const Get = {
-    Rate: (Item) => {
+    Rate: (Item, TimeLostComment) => {
       let Rate = $Rates?.filter(({ ITEM, MACHINE, WORK_CENTER }) => ITEM === Item?.toString().toUpperCase() && MACHINE === MachineName && WORK_CENTER === Process)
+      if (TimeLostComment?.includes("PD-")) return 0
       return Rate[0]?.RATE || 0
     },
     Area: (Item) => {
@@ -24,7 +25,7 @@
     { prop: "MACHINE_NAME", name: "MACHINE", readonly: true },
     { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Get.Area(model?.ITEM) }, readonly: true },
     { prop: "ITEM", name: "ITEM" },
-    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM) }, readonly: true },
+    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST_COMMENT) }, readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
     { prop: "SCRAP", name: "SCRAP (EA)", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
     { prop: "SCRAP_COMMENT", name: "SCRAP DEFECT", columnType: "select", source: $ScrapCodes },
@@ -126,7 +127,7 @@
       IDENTIFIER = Data[rowIndex].DATETIME.split(" ").join("") + Data[rowIndex].MACHINE_NAME.split(" ").join("")
       ROOT_AREA = Get.Area(Data[rowIndex].ITEM)
       PROCESS = Process
-      RATE = Get.Rate(Data[rowIndex].ITEM)
+      RATE = Get.Rate(Data[rowIndex].ITEM, Data[rowIndex].TIME_LOST_COMMENT)
       PRODUCED = parseInt(Data[rowIndex].PRODUCED) || 0
       SCRAP = parseInt(Data[rowIndex].SCRAP) || 0
       TIME_LOST = parseInt(Data[rowIndex].TIME_LOST) || 0
@@ -147,7 +148,7 @@
         IDENTIFIER = Data[model].DATETIME.split(" ").join("") + Data[model].MACHINE_NAME.split(" ").join("")
         ROOT_AREA = Get.Area(Data[model].ITEM)
         PROCESS = Process
-        RATE = Get.Rate(Data[model].ITEM)
+        RATE = Get.Rate(Data[model].ITEM, Data[model].TIME_LOST_COMMENT)
         PRODUCED = parseInt(Data[model].PRODUCED) || 0
         SCRAP = parseInt(Data[model].SCRAP) || 0
         TIME_LOST = parseInt(Data[model].TIME_LOST) || 0
