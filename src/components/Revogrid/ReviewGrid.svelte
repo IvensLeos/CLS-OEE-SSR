@@ -77,5 +77,6 @@
 
   .Title {
     float: left;
+    margin: 0;
   }
 </style>

@@ -9,9 +9,9 @@
   let Grid, Columns, Data
 
   const Get = {
-    Rate: (Item, TimeLostComment) => {
+    Rate: (Item, TimeLost) => {
       let Rate = $Rates?.filter(({ ITEM, MACHINE, WORK_CENTER }) => ITEM === Item?.toString().toUpperCase() && MACHINE === MachineName && WORK_CENTER === Process)
-      if (TimeLostComment?.includes("PD-")) return 0
+      if (TimeLost > 0) return Calculate.ParseInt(Rate[0]?.RATE * (1 - ((TimeLost > 60 ? 60 : TimeLost) / 60)) || 0)
       return Rate[0]?.RATE || 0
     },
     Area: (Item) => {
@@ -25,11 +25,11 @@
     { prop: "MACHINE_NAME", name: "MACHINE", readonly: true },
     { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Get.Area(model?.ITEM) }, readonly: true },
     { prop: "ITEM", name: "ITEM" },
-    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST_COMMENT) }, readonly: true },
+    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST) }, readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
     { prop: "SCRAP", name: "SCRAP (EA)", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
     { prop: "SCRAP_COMMENT", name: "SCRAP DEFECT", columnType: "select", source: $ScrapCodes },
-    { prop: "TIME_LOST", name: "LOST TIME (MIN)", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) } },
+    { prop: "TIME_LOST", name: "LOST TIME (MIN)", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) > 60 ? 60 : Calculate.ParseInt(model.TIME_LOST) } },
     { prop: "TIME_LOST_COMMENT", name: "LOST TIME CODE", columnType: "select", source: $FailureCodes },
     { prop: "COMMENTS", name: "COMMENTS" },
     { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, size: 69, readonly: true },
@@ -73,8 +73,8 @@
       
       if (Filter.length > 0) {
         const { ITEM, PRODUCED, SCRAP } = Filter[0] || 0
-        const { SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS } = Filter[0] || ""
-        Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS }
+        const { SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS, ROWCLASS } = Filter[0] || ""
+        Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS, ROWCLASS }
       }
     }
   }
@@ -87,7 +87,7 @@
       Grid.range = true
       Grid.useClipboard = true
       Grid.columnTypes = {
-        select: new window.RevoGridColumnSelect.CreateSelectColumnType()
+        select: new window.RevoGridColumnSelect.CreateSelectColumnType(),
       }
       Grid.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
@@ -96,6 +96,7 @@
       }
       Grid.columns = Columns
       Grid.source = Data
+      Grid.rowClass = "ROWCLASS"
       Grid.columns = Columns.map((Col, Index) => {
         if (Index === 0) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
         Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
@@ -115,6 +116,11 @@
     }
   }
 
+  /* 
+    TODO 1 COMPLETE: EL RATE DEBE SER DEPENDIENTE DEL TIEMPO CAIDO DE LA MAQUINA YA SEA PLANEADO O NO PLANEADO.
+    TODO 2 COMPLETE: EL PERFORMANCE NO DEBE SER AFECTADO POR EL TIEMPO CAIDO NO PLANEADO.
+  */
+
   const AfterEdit = async (detail) => {
     const { rowIndex, models } = detail || null
     const Data = await Grid.getSource()
@@ -123,18 +129,22 @@
 
     // For 1 Cell Changed
     if (rowIndex || rowIndex === 0) {
-
       IDENTIFIER = Data[rowIndex].DATETIME.split(" ").join("") + Data[rowIndex].MACHINE_NAME.split(" ").join("")
       ROOT_AREA = Get.Area(Data[rowIndex].ITEM)
       PROCESS = Process
-      RATE = Get.Rate(Data[rowIndex].ITEM, Data[rowIndex].TIME_LOST_COMMENT)
+      RATE = Get.Rate(Data[rowIndex].ITEM, Data[rowIndex].TIME_LOST)
       PRODUCED = parseInt(Data[rowIndex].PRODUCED) || 0
       SCRAP = parseInt(Data[rowIndex].SCRAP) || 0
-      TIME_LOST = parseInt(Data[rowIndex].TIME_LOST) || 0
+      TIME_LOST = parseInt(Data[rowIndex].TIME_LOST) > 60 ? 60 : parseInt(Data[rowIndex].TIME_LOST) || 0
       delete Data[rowIndex]?.Q
       delete Data[rowIndex]?.A
       delete Data[rowIndex]?.P
       delete Data[rowIndex]?.OEE
+
+      if (Data[rowIndex].TIME_LOST > 0 && !Data[rowIndex].TIME_LOST_COMMENT) Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "ERROR" }
+      else if (Data[rowIndex].TIME_LOST == 0 && Data[rowIndex].TIME_LOST_COMMENT) Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "ERROR" }
+      else if (!ROOT_AREA) Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "ERROR" }
+      else Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "OK" }
 
       UPDATEDATA = { ...Data[rowIndex], IDENTIFIER, ROOT_AREA, PROCESS, RATE, PRODUCED, SCRAP, TIME_LOST }
 
@@ -144,18 +154,22 @@
     // For Range Cell Changed
     else if (models) {
       for (const model in models) {
-
         IDENTIFIER = Data[model].DATETIME.split(" ").join("") + Data[model].MACHINE_NAME.split(" ").join("")
         ROOT_AREA = Get.Area(Data[model].ITEM)
         PROCESS = Process
-        RATE = Get.Rate(Data[model].ITEM, Data[model].TIME_LOST_COMMENT)
+        RATE = Get.Rate(Data[model].ITEM, Data[model].TIME_LOST)
         PRODUCED = parseInt(Data[model].PRODUCED) || 0
         SCRAP = parseInt(Data[model].SCRAP) || 0
-        TIME_LOST = parseInt(Data[model].TIME_LOST) || 0
+        TIME_LOST = parseInt(Data[model].TIME_LOST) > 60 ? 60 : parseInt(Data[model].TIME_LOST) || 0
         delete Data[model]?.Q
         delete Data[model]?.A
         delete Data[model]?.P
         delete Data[model]?.OEE
+
+        if (Data[model].TIME_LOST > 0 && !Data[model].TIME_LOST_COMMENT) Data[model] = { ...Data[model], ROWCLASS: "ERROR" }
+        else if (Data[model].TIME_LOST == 0 && Data[model].TIME_LOST_COMMENT) Data[model] = { ...Data[model], ROWCLASS: "ERROR" }
+        else if (!ROOT_AREA) Data[model] = { ...Data[model], ROWCLASS: "ERROR" }
+        else Data[model] = { ...Data[model], ROWCLASS: "OK" }
 
         UPDATEDATA = { ...Data[model], IDENTIFIER, ROOT_AREA, PROCESS, RATE, PRODUCED, SCRAP, TIME_LOST }
 
@@ -176,6 +190,16 @@
 </div>
 
 <style>
+  :global(.ERROR) {
+    background-color: #EB5454;
+    color: white;
+  }
+
+  :global(.OK, .focused-rgRow) {
+    background-color: white;
+    color: black;
+  }
+
   .RootContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
