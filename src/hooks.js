@@ -1,21 +1,15 @@
 export const NewGTE = () => {
   let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day1 + " 01:00:00 PM")
-  // else return new Date(Day1 + " 08:00:00 AM")
   return new Date(Day1 + " 08:00:00 AM UTC")
 }
 
 export const NewLT = () => {
   let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day2 + " 01:00:00 PM")
-  // else return new Date(Day2 + " 08:00:00 AM")
   return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
 export const NewOEE = () => {
   let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // if (Intl.DateTimeFormat().resolvedOptions().timeZone === "UTC") return new Date(Day3 + " 05:00:00 AM")
-  // else return new Date(Day3 + " 00:00:00 AM")
   return new Date(Day3 + " 00:00:00 AM UTC")
 }
 
@@ -23,8 +17,8 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
   return [
     {
       $addFields: {
-        "UNPLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "FA-"] }, then: "$TIME_LOST", else: 0 } } },
-        "PLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "PD-"] }, then: "$TIME_LOST", else: 0 } } },
+        "UNPLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "FA-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } },
+        "PLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "PD-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } },
       }
     },
     {
@@ -38,9 +32,9 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
     },
     {
       $addFields: {
-        "AVAILABLE_TIME": 60,
-        "PLANNED_AVAILABLE_TIME": { $subtract: [60, "$PLANNED_DOWNTIME"] },
-        "REAL_AVAILABLE_TIME": { $subtract: [60, "$TIME_LOST"] },
+        "AVAILABLE_TIME": 1,
+        "PLANNED_AVAILABLE_TIME": { $subtract: [1, "$PLANNED_DOWNTIME"] },
+        "REAL_AVAILABLE_TIME": { $divide: [{ $subtract: [60, "$TIME_LOST"] }, 60 ] }
       }
     },
     {

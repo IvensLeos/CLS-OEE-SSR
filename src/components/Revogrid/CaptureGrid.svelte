@@ -116,11 +116,6 @@
     }
   }
 
-  /* 
-    TODO 1 COMPLETE: EL RATE DEBE SER DEPENDIENTE DEL TIEMPO CAIDO DE LA MAQUINA YA SEA PLANEADO O NO PLANEADO.
-    TODO 2 COMPLETE: EL PERFORMANCE NO DEBE SER AFECTADO POR EL TIEMPO CAIDO NO PLANEADO.
-  */
-
   const AfterEdit = async (detail) => {
     const { rowIndex, models } = detail || null
     const Data = await Grid.getSource()
@@ -191,6 +186,8 @@
 
 <style>
   :global(.ERROR) {
+    transition-property: background-color, color;
+    transition-duration: 0.6s;
     background-color: #EB5454;
     color: white;
   }
