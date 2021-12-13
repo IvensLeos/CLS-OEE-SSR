@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         <meta charet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="OEE PRODUCTION - CLS REYNOSA" />
-        <meta http-equiv="refresh" content="3600" />
+        <meta httpEquiv="refresh" content="3600" />
       </Head>
       <Layout>
         <Component {...pageProps} />
