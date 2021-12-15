@@ -1,26 +1,51 @@
-<br>
-<div class="RootContainer">
-  <iframe title="Chart1" class="Chart1" src="https://charts.mongodb.com/charts-cls-oee-qwtue/embed/charts?id=cbeec9e5-ded7-4fd5-8508-c8eb02b03bd1&maxDataAge=3600&theme=light&autoRefresh=true" />
-  <!-- <iframe title="Chart2" style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-cls-oee-qwtue/embed/charts?id=28cefa8d-1cd3-4738-9afa-e63b7e53f18e&maxDataAge=3600&theme=light&autoRefresh=true" /> -->
-</div>
+<script>
+  import LineChart from "../../components/Charts/LineChart.svelte"
 
-<style>
-  .RootContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-content: center;
-    text-align: center;
+  const labels = [
+    "CRYO", "TIP'S", "MCT'S", "SCT'S", "CELL", 
+    "BEAKER", "RESERVOIR", "CT'S CORNING", "CT'S FALCON",
+  ]
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'PRODUCED (EA)',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [50, 10, 5, 2, 20, 30, 45, 55, 60],
+        type: "bar",
+      },
+      {
+        label: 'RATE (PS)',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgba(255, 99, 132, 0.5)',
+        data: [0, 10, 5, 2, 20, 30, 45, 55, 60].reverse(),
+        type: "line",
+      }
+    ]
   }
 
-  .Chart1 {
-    width: 898px;
-    height: 480px;
-
-    background: #FFFFFF;
-    border: none;
-    border-radius: 2px;
-    box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);
-
-    /* transform: scale(0.8); */
+  let Options1 = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'PRODUCED (EA) BY BUSINESS UNIT V.S. RATE (PS)',
+        font: {
+          family: "monospace",
+          size: 20
+        }
+      },
+      subtitle: {
+        display: true,
+        text: 'BUSINESS UNIT',
+        font: {
+          family: "monospace",
+          size: 20
+        }
+      },
+    }
   }
-</style>
+</script>
+
+<LineChart Data={data} Options={Options1} />
