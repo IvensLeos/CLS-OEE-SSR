@@ -66,33 +66,35 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
     { "DATETIME": `${Day2} 07:00:00 AM UTC`, MACHINE_NAME },
   ]
 
-  useEffect(async () => {
-    const SelectTypePlugin = await import("@revolist/revogrid-column-select")
+  useEffect(() => {
+    (async () => {
+      const SelectTypePlugin = await import("@revolist/revogrid-column-select")
 
-    Grid.current.style.height = `${57 + (Data.length * 27)}px`
-    Grid.current.style.alignItems = "center"
+      Grid.current.style.height = `${57 + (Data.length * 27)}px`
+      Grid.current.style.alignItems = "center"
 
-    Grid.current.resize = true
-    Grid.current.range = true
-    Grid.current.useClipboard = true
-    Grid.current.columnTypes = {
-      select: new SelectTypePlugin.CreateSelectColumnType(),
-    }
-    Grid.current.autoSizeColumn = {
-      mode: 'autoSizeOnTextOverlap ',
-      allColumns: true,
-      preciseSize: true
-    }
-    Grid.current.columns = Columns
-    Grid.current.source = Data
-    Grid.current.rowClass = "ROWCLASS"
-    Grid.current.columns = Columns.map((Col, Index) => {
-      if (Index === 0) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
-      Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
-      return Col
-    })
+      Grid.current.resize = true
+      Grid.current.range = true
+      Grid.current.useClipboard = true
+      Grid.current.columnTypes = {
+        select: new SelectTypePlugin.CreateSelectColumnType(),
+      }
+      Grid.current.autoSizeColumn = {
+        mode: 'autoSizeOnTextOverlap ',
+        allColumns: true,
+        preciseSize: true
+      }
+      Grid.current.columns = Columns
+      Grid.current.source = Data
+      Grid.current.rowClass = "ROWCLASS"
+      Grid.current.columns = Columns.map((Col, Index) => {
+        if (Index === 0) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
+        Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
+        return Col
+      })
 
-    Grid.current.addEventListener("afteredit", (e) => AfterEdit(e))
+      Grid.current.addEventListener("afteredit", (e) => AfterEdit(e))
+    })()
   }, [])
 
   useEffect(() => {
