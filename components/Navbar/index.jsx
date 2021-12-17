@@ -4,7 +4,7 @@ import Divider from "./Divider"
 import Logo from "./Logo"
 import Item from "./Item"
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -46,3 +46,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-export default ({ children, Title, Path }) => {
+const DropdownItem = ({ children, Title, Path }) => {
   let CurrentPath = useRouter().asPath
 
   return (
@@ -19,3 +19,5 @@ export default ({ children, Title, Path }) => {
     </>
   )
 }
+
+export default DropdownItem

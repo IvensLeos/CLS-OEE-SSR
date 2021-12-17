@@ -4,7 +4,7 @@ import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1, Day2, Calculate } from "../../util/hooks"
 import { useRouter } from "next/router"
 
-export default ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, SERVERDATA }) => {
+const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, SERVERDATA }) => {
   let Process = useRouter().query.process
   let Grid = useRef()
   let Columns, Data
@@ -214,3 +214,5 @@ export default ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, SERVER
     </>
   )
 }
+
+export default CaptureGrid

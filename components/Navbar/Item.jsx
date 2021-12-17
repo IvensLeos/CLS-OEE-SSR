@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-export default ({ children, DropdownItem = false, href}) => {
+const Item = ({ children, DropdownItem = false, href}) => {
   let CurrentPath = useRouter().asPath
 
   if (DropdownItem) {
@@ -27,3 +27,5 @@ export default ({ children, DropdownItem = false, href}) => {
     )
   }
 }
+
+export default Item

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1, Calculate } from "../../util/hooks"
 
-export default ({ OEES, Header }) => {
+const DashboardGrid = ({ OEES, Header }) => {
   let Grid = useRef()
   let Columns = [
     { prop: "ID", name: Header, order: "asc", size: 141, readonly: true },
@@ -76,3 +76,5 @@ export default ({ OEES, Header }) => {
     </>
   )
 }
+
+export default DashboardGrid

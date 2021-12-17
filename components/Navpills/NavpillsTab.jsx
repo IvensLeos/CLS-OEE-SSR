@@ -1,6 +1,6 @@
 import CaptureGrid from "../Revogrid/CaptureGrid"
 
-export default ({ Machines, Process, FailureCodes, ScrapCodes, Rates, ServerData }) => {
+const NavpillsTab = ({ Machines, Process, FailureCodes, ScrapCodes, Rates, ServerData }) => {
   const FormatName = (Name) => Name.replace("'", "").replace("-", "").split(" ").join("")
 
   return (
@@ -26,3 +26,5 @@ export default ({ Machines, Process, FailureCodes, ScrapCodes, Rates, ServerData
     </>
   )
 }
+
+export default NavpillsTab

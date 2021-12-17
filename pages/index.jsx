@@ -14,7 +14,7 @@ export const getServerSideProps = async () => {
 
 import DashboardGrid from "../components/Revogrid/DashboardGrid"
 
-export default ({ BusinessOEE, ProcessOEE, PlantOEE }) => {
+const IndexPage = ({ BusinessOEE, ProcessOEE, PlantOEE }) => {
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
@@ -24,3 +24,5 @@ export default ({ BusinessOEE, ProcessOEE, PlantOEE }) => {
     </>
   )
 }
+
+export default IndexPage

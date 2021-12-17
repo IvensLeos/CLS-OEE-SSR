@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1, Calculate } from "../../util/hooks"
 
-export default ({ OEES, Area, Process }) => {
+const ReviewGrid = ({ OEES, Area, Process }) => {
   let Grid = useRef()
   let Columns = [
     { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true },
@@ -83,3 +83,5 @@ export default ({ OEES, Area, Process }) => {
     </>
   )
 }
+
+export default ReviewGrid

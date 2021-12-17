@@ -40,7 +40,7 @@ export const getServerSideProps = async ({ params }) => {
   }
 }
 
-export default ({ MACHINES, PROCESS, OEES, FAILURECODES, SCRAPCODES, RATES }) => {
+const CaptureDataProcess = ({ MACHINES, PROCESS, OEES, FAILURECODES, SCRAPCODES, RATES }) => {
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
@@ -48,3 +48,5 @@ export default ({ MACHINES, PROCESS, OEES, FAILURECODES, SCRAPCODES, RATES }) =>
     </>
   )
 }
+
+export default CaptureDataProcess

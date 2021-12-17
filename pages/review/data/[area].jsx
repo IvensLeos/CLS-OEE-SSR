@@ -35,7 +35,7 @@ export const getServerSideProps = async ({ params }) => {
   }
 }
 
-export default ({ Params }) => {
+const ReviewDataArea = ({ Params }) => {
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
@@ -49,3 +49,5 @@ export default ({ Params }) => {
     </>
   )
 }
+
+export default ReviewDataArea

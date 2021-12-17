@@ -1,4 +1,4 @@
-export default ({ Grid, FileName }) => {
+const ExportToCsvButton = ({ Grid, FileName }) => {
   const ExportToCSVForOEE = (Grid, FileName) => {
     Grid.current.getPlugins().then(Plugins => {
       Plugins.forEach(ExportPlugin => ExportPlugin.exportFile && ExportPlugin.exportFile({ filename: FileName }))
@@ -26,3 +26,5 @@ export default ({ Grid, FileName }) => {
     </>
   )
 }
+
+export default ExportToCsvButton
