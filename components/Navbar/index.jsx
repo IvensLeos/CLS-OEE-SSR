@@ -29,16 +29,16 @@ const Navbar = () => {
             <DropdownItem Title="Review Production" Path="/review/data">
               <Item DropdownItem href="/review/data/cryo">Cryo</Item>
               <Divider />
-              <Item DropdownItem href="/review/data/tips">Tip's</Item>
-              <Item DropdownItem href="/review/data/mcts">Mct's</Item>
-              <Item DropdownItem href="/review/data/scts">Sct's</Item>
+              <Item DropdownItem href="/review/data/tips">Tip&apos;s</Item>
+              <Item DropdownItem href="/review/data/mcts">Mct&apos;s</Item>
+              <Item DropdownItem href="/review/data/scts">Sct&apos;s</Item>
               <Divider />
               <Item DropdownItem href="/review/data/cell">Cell</Item>
               <Item DropdownItem href="/review/data/beaker">Beaker</Item>
               <Item DropdownItem href="/review/data/reservoir">Reservoir</Item>
               <Divider />
-              <Item DropdownItem href="/review/data/ctscorning">CT'S Corning</Item>
-              <Item DropdownItem href="/review/data/ctsfalcon">CT'S Falcon</Item>
+              <Item DropdownItem href="/review/data/ctscorning">CT&apos;S Corning</Item>
+              <Item DropdownItem href="/review/data/ctsfalcon">CT&apos;S Falcon</Item>
             </DropdownItem>
           </ul>
         </div>
