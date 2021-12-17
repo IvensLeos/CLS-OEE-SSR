@@ -62,7 +62,7 @@ export default ({ OEES, Area, Process }) => {
       <style jsx>{`
         :global(.RootContainer) {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1614px 1fr;
           align-content: center;
           text-align: center;
         }

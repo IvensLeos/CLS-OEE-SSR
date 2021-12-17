@@ -40,7 +40,7 @@ export default ({ Params }) => {
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
       {Params.map(({ Data, Area, Process }) => {
-        if (Data.length > 0){
+        if (Data.length > 0) {
           return (
             <ReviewGrid key={Process} OEES={Data} Area={Area} Process={Process} />
           )

@@ -15,18 +15,18 @@ export default async function handler(req, res) {
   }
 
   const Connection = await DatabaseConnection()
-  const RatesCollection = Connection.Database.collection("rates")
-
-  let RATES
+  const MachinesCollection = Connection.Database.collection("machines")
+  
+  let MACHINES
 
   if (req.method === "GET") {
-    RATES = await RatesCollection.find().toArray()
+    MACHINES = await MachinesCollection.find({ "ACTIVE": true }).sort({ "MACHINE_NAME": 1 }).toArray()
   }
   else if (req.method === "POST") {
-    RATES = await RatesCollection.find({ "WORK_CENTER": ResolveParam[Process] }).toArray()
+    MACHINES = await MachinesCollection.find({ "ACTIVE": true, "PROCESS": ResolveParam[Process] }).sort({ "MACHINE_NAME": 1 }).toArray()
   }
 
   res.status(200).json({
-    RATES
+    MACHINES
   })
 }
