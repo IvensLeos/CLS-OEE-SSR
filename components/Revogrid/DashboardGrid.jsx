@@ -40,7 +40,7 @@ const DashboardGrid = ({ OEES, Header }) => {
       Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
       return Col
     })
-  }, [])
+  })
 
   return (
     <>

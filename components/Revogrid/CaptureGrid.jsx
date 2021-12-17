@@ -95,7 +95,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
 
       Grid.current.addEventListener("afteredit", (e) => AfterEdit(e))
     })()
-  }, [])
+  })
 
   useEffect(() => {
     // $: MergeDataFromDB()
@@ -112,7 +112,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
       }
     }
     // }
-  }, [])
+  })
 
   const InsertOrUpdateOEE = async (Data) => {
     try {

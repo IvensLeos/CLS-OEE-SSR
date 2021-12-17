@@ -1,10 +1,12 @@
+import Image from "next/image"
+
 const Logo = () => {
   return (
     <>
-      <img src="/Logo.png" alt="Logo" width={110} height={18} className="Logo" />
+      <Image src="/Logo.png" alt="Logo" width={110} height={18} className="Logo2" />
       <style jsx>{`
-        :global(.Logo) {
-          margin-left: -5px !important;
+        :global(.Logo2) {
+          margin-left: -2px !important;
         }
       `}</style>
     </>
