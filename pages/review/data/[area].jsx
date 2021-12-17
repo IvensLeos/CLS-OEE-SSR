@@ -3,7 +3,7 @@ import ReviewGrid from "../../../components/Revogrid/ReviewGrid"
 
 export const getServerSideProps = async ({ params }) => {
   const Area = params.area
-  const Data = await fetch(process.env.VERCEL_URL + "api/review/data/" + Area).then(r => r.json())
+  const Data = await fetch(process.env.SITE_URL + "api/review/data/" + Area).then(r => r.json())
 
   const { OEES } = Data
 

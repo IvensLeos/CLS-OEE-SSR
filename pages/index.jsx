@@ -1,7 +1,7 @@
 import Script from "next/script"
 
 export const getServerSideProps = async () => {
-  const Data = await fetch(process.env.VERCEL_URL + "/api").then(r => r.json())
+  const Data = await fetch(process.env.SITE_URL + "/api").then(r => r.json())
   
   return {
     props: {
