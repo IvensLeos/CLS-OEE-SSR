@@ -14,11 +14,11 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
     { prop: "MACHINE_NAME", name: "MACHINE", readonly: true },
     { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Get.Area(model?.ITEM) }, readonly: true },
     { prop: "ITEM", name: "ITEM" },
-    { prop: "RATE", name: "RATE (PS)", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST) }, readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
-    { prop: "SCRAP", name: "SCRAP (EA)", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
+    { prop: "RATE", name: "RATE (PS)", columnType: "numeric", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST) }, readonly: true },
+    { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", cellProperties: ({ model }) => { model.PRODUCED = Calculate.ParseInt(model.PRODUCED) } },
+    { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", cellProperties: ({ model }) => { model.SCRAP = Calculate.ParseInt(model.SCRAP) } },
     { prop: "SCRAP_COMMENT", name: "SCRAP DEFECT", columnType: "select", source: SCRAPCODES },
-    { prop: "TIME_LOST", name: "LOST TIME (MIN)", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) > 60 ? 60 : Calculate.ParseInt(model.TIME_LOST) } },
+    { prop: "TIME_LOST", name: "LOST TIME (MIN)", columnType: "numeric", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) > 60 ? 60 : Calculate.ParseInt(model.TIME_LOST) } },
     { prop: "TIME_LOST_COMMENT", name: "LOST TIME CODE", columnType: "select", source: FAILURECODES },
     { prop: "COMMENTS", name: "COMMENTS" },
     { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, size: 69, readonly: true },
@@ -69,6 +69,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
   useEffect(() => {
     (async () => {
       const SelectTypePlugin = await import("@revolist/revogrid-column-select")
+      const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${57 + (Data.length * 27)}px`
       Grid.current.style.alignItems = "center"
@@ -78,6 +79,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
       Grid.current.useClipboard = true
       Grid.current.columnTypes = {
         select: new SelectTypePlugin.CreateSelectColumnType(),
+        numeric: new NumericTypePlugin.default("0,0")
       }
       Grid.current.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
@@ -211,6 +213,9 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
         }
         :global(.ExportButtonAligner) {
           min-width: 1475px;
+        }
+        :global(.rgCell) {
+          text-align: center !important;
         }
       `}</style>
     </>

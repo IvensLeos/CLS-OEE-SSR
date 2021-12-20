@@ -6,7 +6,7 @@ import Layout from "../components/Layout"
 
 import { useEffect } from "react"
 
-const MyApp = ({ Component, pageProps })  => {
+const App = ({ Component, pageProps })  => {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.js")
   }, [])
@@ -27,4 +27,4 @@ const MyApp = ({ Component, pageProps })  => {
   )
 }
 
-export default MyApp
+export default App
