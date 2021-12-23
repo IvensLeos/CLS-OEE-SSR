@@ -1,10 +1,12 @@
 import "bootstrap/dist/css/bootstrap.css"
 import "../styles/globals.css"
 
+import { useEffect } from "react"
 import Head from "next/head"
 import Layout from "../components/Layout"
 
-import { useEffect } from "react"
+import { ContextProvider } from "../components/Context/Context"
+import GraphMachineModal from "../components/Modal/GraphMachineModal"
 
 const App = ({ Component, pageProps })  => {
   useEffect(() => {
@@ -20,9 +22,12 @@ const App = ({ Component, pageProps })  => {
         <meta name="description" content="OEE PRODUCTION - CLS REYNOSA" />
         <meta httpEquiv="refresh" content="3600" />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ContextProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <GraphMachineModal />
+      </ContextProvider>
     </>
   )
 }
