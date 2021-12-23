@@ -70,7 +70,6 @@ const DashboardGrid = ({ OEES, Header }) => {
       <br />
       <div className="RootContainer">
         <div></div>
-        {/* <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true" onDoubleClick={(e) => RedirectTo(e)}> */}
         <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonAligner">
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Header} REPORT`} />
