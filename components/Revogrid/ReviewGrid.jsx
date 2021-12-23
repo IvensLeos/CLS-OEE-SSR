@@ -16,7 +16,8 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
 
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
+    // { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
+    { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true  },
     { prop: "ITEM", name: "ITEM", size: 100, readonly: true },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", size: 75, readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", size: 90, readonly: true },
