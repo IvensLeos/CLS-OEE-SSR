@@ -1,9 +1,7 @@
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, SubTitle } from "chart.js"
+import Chart from "chart.js/auto"
 import { Bar } from "react-chartjs-2"
 
 import { NewOEE } from "../../util/hooks"
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, SubTitle)
 
 const MachineHistoryChart = ({ Title, MachineData, ChartDate = NewOEE().toLocaleDateString() }) => {
   const Options = {
