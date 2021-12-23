@@ -1,12 +1,14 @@
+import { useRouter } from "next/router"
 import { useEffect, useRef } from "react"
 
 import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1, Calculate } from "../../util/hooks"
 
 const DashboardGrid = ({ OEES, Header }) => {
+  let Router = useRouter()
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: Header, order: "asc", size: 141, readonly: true },
+    { prop: "ID", name: Header, order: "asc", size: 141, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => RedirectTo(target.innerText)) }, props.model[props.prop]) } },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
     { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
@@ -49,12 +51,27 @@ const DashboardGrid = ({ OEES, Header }) => {
     })()
   })
 
+  const RedirectTo = (Param) => {
+    switch (Param) {
+      case "CRYO": Router.push("/review/data/cryo"); break
+      case "TIP'S": Router.push("/review/data/tips"); break
+      case "MCT'S": Router.push("/review/data/mcts"); break
+      case "SCT'S": Router.push("/review/data/scts"); break
+      case "CELL": Router.push("/review/data/cell"); break
+      case "BEAKER": Router.push("/review/data/beaker"); break
+      case "RESERVOIR": Router.push("/review/data/reservoir"); break
+      case "CT'S CORNING": Router.push("/review/data/ctscorning"); break
+      case "CT'S FALCON": Router.push("/review/data/ctsfalcon"); break
+    }
+  }
+
   return (
     <>
       <br />
       <div className="RootContainer">
         <div></div>
-        <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
+        {/* <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true" onDoubleClick={(e) => RedirectTo(e)}> */}
+        <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonAligner">
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Header} REPORT`} />
           </div>
