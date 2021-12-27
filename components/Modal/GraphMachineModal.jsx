@@ -34,7 +34,7 @@ const GraphMachineModal = () => {
     return (
       <div className="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" onClick={() => DecreaseChartDate(ChartDate)} className="btn btn-primary">&lt;</button>
-        <button type="button" className="btn btn-outline">{ChartDate}</button>
+        <button type="button" onClick={() => SetChartDate(NewGTE().toLocaleDateString())}className="btn btn-outline">{ChartDate}</button>
         <button type="button" onClick={() => IncreaseChartDate(ChartDate)} className="btn btn-primary">&gt;</button>
       </div>
     )
