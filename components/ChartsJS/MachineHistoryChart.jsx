@@ -4,7 +4,13 @@ import { Bar } from "react-chartjs-2"
 import { NewOEE } from "../../util/hooks"
 
 const MachineHistoryChart = ({ Title, MachineData, ChartDate = NewOEE().toLocaleDateString() }) => {
-  const RenderData = MachineData.filter(({ OEEDATE }) => ChartDate === new Date(OEEDATE).toLocaleDateString())
+  const IncreaseChartDate = (OldDate) => {
+    OldDate = new Date(OldDate)
+    OldDate.setDate(OldDate?.getDate() + 1)
+    return OldDate
+  }
+
+  const RenderData = MachineData.filter(({ OEEDATE }) => ChartDate === new Date(IncreaseChartDate(OEEDATE)).toLocaleDateString())
 
   const FormatedLabels = RenderData.map(({ DATETIME }) => {
     let UTCHours = new Date(DATETIME).getUTCHours()
