@@ -66,7 +66,7 @@ const MachineHistoryChart = ({ Title, MachineData, ChartDate = NewOEE().toLocale
       subtitle: {
         display: true,
         position: "bottom",
-        text: `OEE Date: ${new Date(Date.now()).toDateString()}`,
+        text: `OEE Date: ${new Date(ChartDate).toDateString()}`,
         padding: { top: 10 }
       },
       tooltip: {
