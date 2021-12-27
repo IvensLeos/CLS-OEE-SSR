@@ -8,7 +8,7 @@ const DashboardGrid = ({ OEES, Header }) => {
   let Router = useRouter()
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: Header, order: "asc", size: 141, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => RedirectTo(target.innerText)) }, props.model[props.prop]) } },
+    { prop: "ID", name: Header, order: "asc", size: 168, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => RedirectTo(target.innerText)) }, props.model[props.prop]) } },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
     { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
@@ -78,9 +78,6 @@ const DashboardGrid = ({ OEES, Header }) => {
         <div></div>
       </div>
       <style jsx>{`
-        :global(.Logo) {
-          margin-left: -5px !important;
-        }
         :global(.RootContainer) {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
@@ -88,10 +85,10 @@ const DashboardGrid = ({ OEES, Header }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1613px;
+          max-width: 1640px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1613px;
+          min-width: 1640px;
         }
         :global(.rgCell) {
           text-align: center !important;

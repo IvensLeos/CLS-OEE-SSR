@@ -69,9 +69,13 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       <div className="RootContainer">
         <div></div>
         <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
-          <div className="ExportButtonAligner">
-            <h4 className="Title">{Area} - {Process}</h4>
-            <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
+          <div className="ExportButtonContainer">
+            <div className="Title">
+              <h4>{Area} - {Process}</h4>
+            </div>
+            <div className="Export">
+              <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
+            </div>
           </div>
         </revo-grid>
         <div></div>
@@ -79,19 +83,20 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       <style jsx>{`
         :global(.RootContainer) {
           display: grid;
-          grid-template-columns: 1fr 1614px 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
           align-content: center;
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1614px;
-        }
-        :global(.ExportButtonAligner) {
-          min-width: 1644px;
+          max-width: 1616px;
         }
         :global(.Title) {
-          float: left;
-          margin: 0;
+          float: left !important;
+          margin-left: -807px;
+        }
+        :global(.Export) {
+          float: right !important;
+           margin-right: -807px;
         }
         :global(.rgCell) {
           text-align: center !important;

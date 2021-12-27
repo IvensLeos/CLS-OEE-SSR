@@ -4,32 +4,6 @@ import { Bar } from "react-chartjs-2"
 import { NewOEE } from "../../util/hooks"
 
 const MachineHistoryChart = ({ Title, MachineData, ChartDate = NewOEE().toLocaleDateString() }) => {
-  const Options = {
-    responsive: true,
-    interaction: {
-      intersect: false,
-      mode: 'index',
-    },
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: Title,
-        font: { size: "20" }
-      },
-      subtitle: {
-        display: true,
-        position: "bottom",
-        text: `OEE Date: ${new Date(Date.now()).toDateString()}`,
-        padding: {
-          top: 10
-        }
-      }
-    }
-  }
-
   const RenderData = MachineData.filter(({ OEEDATE }) => ChartDate === new Date(OEEDATE).toLocaleDateString())
 
   const FormatedLabels = RenderData.map(({ DATETIME }) => {
@@ -56,9 +30,45 @@ const MachineHistoryChart = ({ Title, MachineData, ChartDate = NewOEE().toLocale
         type: "bar",
         label: "PRODUCED (EA)",
         data: ProducedData,
-        backgroundColor: "rgba(68, 114, 196, 1)",
+        backgroundColor: "rgba(68, 114, 196, 1)"
+      }
+    ]
+  }
+
+  const CustomFooterTooltip = (TooltipItems) => {
+    let CustomTooltip
+    TooltipItems.forEach(({ dataIndex }) => {
+      const { TIME_LOST, TIME_LOST_COMMENT } = RenderData[dataIndex] || ""
+      if (TIME_LOST > 0) CustomTooltip = `LOST TIME: ${TIME_LOST} MINUTES \nLOST TIME CODE: ${TIME_LOST_COMMENT ? TIME_LOST_COMMENT : "NOT FOUND"}`
+    })
+    return CustomTooltip
+  }
+
+  const Options = {
+    responsive: true,
+    interaction: {
+      intersect: false,
+      mode: 'index',
+    },
+    plugins: {
+      legend: { position: "top" },
+      title: {
+        display: true,
+        text: Title,
+        font: { size: "20" }
       },
-    ],
+      subtitle: {
+        display: true,
+        position: "bottom",
+        text: `OEE Date: ${new Date(Date.now()).toDateString()}`,
+        padding: { top: 10 }
+      },
+      tooltip: {
+        callbacks: {
+          footer: CustomFooterTooltip
+        }
+      }
+    }
   }
 
   return <Bar options={Options} data={Data} />
