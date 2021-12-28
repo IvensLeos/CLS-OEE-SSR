@@ -15,6 +15,7 @@ export const NewLT = () => {
   return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
+
 export const NewOEE = () => {
   let Day3 = new Date(Date.now() - 115200000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   // console.log({Day3})
