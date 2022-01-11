@@ -1,23 +1,41 @@
 {
-  "name": "cls-oee-ssr",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "mongo-gui": "^0.0.17"
-  },
-  "scripts": {
-    "start": "mongo-gui -u mongodb+srv://root:toor@cls.xp4cb.mongodb.net/CLS_OEE?retryWrites=true&w=majority"
+  "name": "mongo-gui",
+  "description": "A web-based MongoDB graphical user interface",
+  "version": "0.0.17",
+  "main": "server.js",
+  "license": "MIT",
+  "keywords": [
+    "mongodb",
+    "express",
+    "admin",
+    "mongo",
+    "gui",
+    "ui",
+    "user-interface"
+  ],
+  "homepage": "https://mongo-gui.herokuapp.com/",
+  "bugs": {
+    "url": "https://github.com/arunbandari/mongo-gui/issues",
+    "email": "arunbandari2@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IvensLeos/CLS-OEE-SSR.git"
+    "url": "https://github.com/arunbandari/mongo-gui"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/IvensLeos/CLS-OEE-SSR/issues"
+  "scripts": {
+    "start": "node server.js",
+    "build-ui": "cd client && npm run clean-build-compress"
   },
-  "homepage": "https://github.com/IvensLeos/CLS-OEE-SSR#readme"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bson": "^4.0.3",
+    "connect-gzip-static": "^2.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "minimist": "^1.2.5",
+    "mongodb": "^3.6.4"
+  },
+  "bin": {
+    "mongo-gui": "./server.js"
+  }
 }
