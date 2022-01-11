@@ -23,7 +23,7 @@
     "url": "https://github.com/arunbandari/mongo-gui"
   },
   "scripts": {
-    "start": "node server.js -u mongodb+srv://root:toor@cls.xp4cb.mongodb.net/CLS_OEE?retryWrites=true&w=majority",
+    "start": "node server.js",
     "build-ui": "cd client && npm run clean-build-compress"
   },
   "dependencies": {
