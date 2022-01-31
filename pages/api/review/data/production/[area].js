@@ -1,5 +1,5 @@
-import { DatabaseConnection } from "../../../../util/mongodb"
-import { GenerateAggregation } from "../../../../util/hooks"
+import { DatabaseConnection } from "../../../../../util/mongodb"
+import { GenerateAggregation } from "../../../../../util/hooks"
 
 export default async function handler(req, res) {
   const { area } = req.query

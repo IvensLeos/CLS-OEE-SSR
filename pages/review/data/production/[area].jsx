@@ -1,9 +1,9 @@
 import Script from "next/script"
-import ReviewGrid from "../../../components/Revogrid/ReviewGrid"
+import ReviewGrid from "../../../../components/Revogrid/ReviewGrid"
 
 export const getServerSideProps = async ({ params }) => {
   const Area = params.area
-  const Data = await fetch(process.env.SITE_URL + "api/review/data/" + Area).then(r => r.json())
+  const Data = await fetch(process.env.SITE_URL + "api/review/data/production/" + Area).then(r => r.json())
 
   const { OEES } = Data
 
@@ -46,6 +46,7 @@ const ReviewDataArea = ({ Params }) => {
           )
         }
       })}
+      <br />
     </>
   )
 }

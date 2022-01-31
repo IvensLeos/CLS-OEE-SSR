@@ -1,5 +1,5 @@
-import { DatabaseConnection } from "../../../../util/mongodb"
-import { NewOEE } from "../../../../util/hooks"
+import { DatabaseConnection } from "../../../../../util/mongodb"
+import { NewOEE } from "../../../../../util/hooks"
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
