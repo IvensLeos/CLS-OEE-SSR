@@ -6,3 +6,7 @@
 body {
   margin: 0 !important;
 }
+
+.temp-bg-range {
+  display: block !important;
+}
