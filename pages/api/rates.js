@@ -20,10 +20,10 @@ export default async function handler(req, res) {
   let RATES
 
   if (req.method === "GET") {
-    RATES = await RatesCollection.find().toArray()
+    RATES = await RatesCollection.find({}).project({ "_id": 0, "ITEM": 1, "MACHINE": 1, "RATE": 1, "WORK_CENTER": 1, "ROOT_AREA": 1 }).toArray()
   }
   else if (req.method === "POST") {
-    RATES = await RatesCollection.find({ "WORK_CENTER": ResolveParam[Process] }).toArray()
+    RATES = await RatesCollection.find({ "WORK_CENTER": ResolveParam[Process] }).project({ "_id": 0, "ITEM": 1, "MACHINE": 1, "RATE": 1, "WORK_CENTER": 1, "ROOT_AREA": 1 }).toArray()
   }
 
   res.status(200).json({

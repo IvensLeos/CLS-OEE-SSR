@@ -1,9 +1,9 @@
 import Script from "next/script"
-import NavpillsTab from "../../../components/Navpills/NavpillsTab"
+import NavpillsTab from "../../../../components/Navpills/NavpillsTab"
 
 export const getServerSideProps = async ({ params }) => {
   const Process = params.process
-  const Oees = await fetch(process.env.SITE_URL + "api/capture/data/" + Process).then(r => r.json())
+  const Oees = await fetch(process.env.SITE_URL + "api/capture/data/production/" + Process).then(r => r.json())
   const FailureCodes = await fetch(process.env.SITE_URL + "api/failurecodes").then(r => r.json())
   const ScrapCodes = await fetch(process.env.SITE_URL + "api/scrapcodes").then(r => r.json())
   const Rates = await fetch(process.env.SITE_URL + "api/rates", {

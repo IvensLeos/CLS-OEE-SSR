@@ -13,7 +13,6 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <Item href="/">Dashboard</Item>
-            <Item href="/graphs">Graphs</Item>
             <CaptureProduction />
             <ReviewProduction />
           </ul>

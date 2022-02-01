@@ -100,8 +100,6 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
   })
 
   useEffect(() => {
-    // $: MergeDataFromDB()
-    // const MergeDataFromDB = () => {
     for (const LocalData in Data) {
       const { DATETIME, MACHINE_NAME } = Data[LocalData]
       let FilterIdentifier = DATETIME?.split(" ").join("") + MACHINE_NAME?.split(" ").join("")
@@ -113,12 +111,11 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
         Data[LocalData] = { ...Data[LocalData], ITEM, PRODUCED, SCRAP, SCRAP_COMMENT, TIME_LOST, TIME_LOST_COMMENT, COMMENTS, ROWCLASS }
       }
     }
-    // }
   })
 
   const InsertOrUpdateOEE = async (Data) => {
     try {
-      await fetch("/api/capture/data/" + Process, {
+      await fetch("/api/capture/data/production/" + Process, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Data)

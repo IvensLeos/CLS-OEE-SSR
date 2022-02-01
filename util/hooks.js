@@ -26,8 +26,8 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
   return [
     {
       $addFields: {
-        "UNPLANNED_DOWNTIME": { $round: [{ $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "FA-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } }, 0] },
-        "PLANNED_DOWNTIME": { $round: [{ $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "PD-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } }, 0] }
+        "UNPLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "FA-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } },
+        "PLANNED_DOWNTIME": { $sum: { $cond: { if: { $eq: [{ $substr: ["$TIME_LOST_COMMENT", 0, 3] }, "PD-"] }, then: { $divide: ["$TIME_LOST", 60] }, else: 0 } } },
       }
     },
     {
@@ -42,8 +42,8 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
     {
       $addFields: {
         "AVAILABLE_TIME": 1,
-        "PLANNED_AVAILABLE_TIME": { $round: [{ $subtract: [1, "$PLANNED_DOWNTIME"] }, 0] },
-        "REAL_AVAILABLE_TIME": { $round: [{ $divide: [{ $subtract: [60, "$TIME_LOST"] }, 60] }, 0] },
+        "PLANNED_AVAILABLE_TIME": { $subtract: [1, "$PLANNED_DOWNTIME"] },
+        "REAL_AVAILABLE_TIME": { $divide: [{ $subtract: [60, "$TIME_LOST"] }, 60 ] }
       }
     },
     {

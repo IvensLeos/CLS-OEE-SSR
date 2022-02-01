@@ -1,5 +1,5 @@
-import { DatabaseConnection } from "../../../../util/mongodb"
-import { NewOEE } from "../../../../util/hooks"
+import { DatabaseConnection } from "../../../../../util/mongodb"
+import { NewOEE } from "../../../../../util/hooks"
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     const Connection = await DatabaseConnection()
     const OEESCollection = Connection.Database.collection("oees")
-    const OEES = await OEESCollection.find({ "OEEDATE": NewOEE(), "PROCESS": ResolveParam[process] }).toArray()
+    const OEES = await OEESCollection.find({ "OEEDATE": NewOEE(), "PROCESS": ResolveParam[process] }).project({ "_id": 0 }).toArray()
 
     res.status(200).json({
       OEES

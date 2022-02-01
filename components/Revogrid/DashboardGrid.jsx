@@ -12,11 +12,11 @@ const DashboardGrid = ({ OEES, Header }) => {
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
     { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
-    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "numeric", size: 141, readonly: true },
-    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "numeric", size: 191, readonly: true },
-    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "numeric", size: 153, readonly: true },
-    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "numeric", size: 166, readonly: true },
-    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "numeric", size: 176, readonly: true },
+    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 141, readonly: true },
+    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 191, readonly: true },
+    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 153, readonly: true },
+    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 166, readonly: true },
+    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 176, readonly: true },
     { prop: "TAU", name: "TAU", size: 69, cellProperties: ({ model }) => { model.TAU = Calculate.TAU(model) }, readonly: true },
     { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
     { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
@@ -35,7 +35,8 @@ const DashboardGrid = ({ OEES, Header }) => {
       Grid.current.resize = true
       Grid.current.range = true
       Grid.current.columnTypes = {
-        numeric: new NumericTypePluggin.default("0,0")
+        numeric: new NumericTypePluggin.default("0,0"),
+        decimal: new NumericTypePluggin.default("0,0.[00]")
       }
       Grid.current.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
