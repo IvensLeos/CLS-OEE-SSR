@@ -54,15 +54,15 @@ const DashboardGrid = ({ OEES, Header }) => {
 
   const RedirectTo = (Param) => {
     switch (Param) {
-      case "CRYO": Router.push("/review/data/cryo"); break
-      case "TIP'S": Router.push("/review/data/tips"); break
-      case "MCT'S": Router.push("/review/data/mcts"); break
-      case "SCT'S": Router.push("/review/data/scts"); break
-      case "CELL": Router.push("/review/data/cell"); break
-      case "BEAKER": Router.push("/review/data/beaker"); break
-      case "RESERVOIR": Router.push("/review/data/reservoir"); break
-      case "CT'S CORNING": Router.push("/review/data/ctscorning"); break
-      case "CT'S FALCON": Router.push("/review/data/ctsfalcon"); break
+      case "CRYO": Router.push("/review/data/production/cryo"); break
+      case "TIP'S": Router.push("/review/data/production/tips"); break
+      case "MCT'S": Router.push("/review/data/production/mcts"); break
+      case "SCT'S": Router.push("/review/data/production/scts"); break
+      case "CELL": Router.push("/review/data/production/cell"); break
+      case "BEAKER": Router.push("/review/data/production/beaker"); break
+      case "RESERVOIR": Router.push("/review/data/production/reservoir"); break
+      case "CT'S CORNING": Router.push("/review/data/production/ctscorning"); break
+      case "CT'S FALCON": Router.push("/review/data/production/ctsfalcon"); break
     }
   }
 
