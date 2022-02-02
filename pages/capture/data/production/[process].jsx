@@ -18,20 +18,25 @@ export const getServerSideProps = async ({ params }) => {
   }).then(r => r.json())
 
   const ResolveParam = {
-    molding: "MOLDING",
-    printing: "PRINTING",
-    printingandassembling: "PRINTING & ASSEMBLING",
-    washing: "WASHING",
-    assembling: "ASSEMBLING",
-    assemblingandpacking: "ASSEMBLING & PACKING",
-    packing: "PACKING",
-    manualpacking: "MANUAL PACKING",
+    molding: ["MOLDING", "NORTH SIDE"],
+    printing: ["PRINTING", "NORTH SIDE"],
+    printingandassembling: ["PRINTING & ASSEMBLING", "NORTH SIDE"],
+    washing: ["WASHING", "NORTH SIDE"],
+    assembling: ["ASSEMBLING", "NORTH SIDE"],
+    assemblingandpacking: ["ASSEMBLING & PACKING", "NORTH SIDE"],
+    packing: ["PACKING", "NORTH SIDE"],
+    manualpacking: ["MANUAL PACKING", "NORTH SIDE"],
+    southmolding: ["MOLDING", "SOUTH SIDE"],
+    assemblingtips: ["ASSEMBLING TIP'S", "SOUTH SIDE"],
+    pounchedtubes: ["POUNCHED TUBES", "SOUTH SIDE"],
+    southpacking: ["PACKING", "SOUTH SIDE"],
+    southmanualpacking: ["MANUAL PACKING", "SOUTH SIDE"],
   }
 
   return {
     props: {
       MACHINES: Machines.MACHINES,
-      PROCESS: ResolveParam[Process],
+      PROCESS: ResolveParam[Process][0],
       OEES: Oees.OEES,
       FAILURECODES: FailureCodes.FAILURECODES,
       SCRAPCODES: ScrapCodes.SCRAPCODES,

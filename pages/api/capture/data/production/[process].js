@@ -6,19 +6,24 @@ export default async function handler(req, res) {
     const { process } = req.query
 
     const ResolveParam = {
-      molding: "MOLDING",
-      printing: "PRINTING",
-      printingandassembling: "PRINTING & ASSEMBLING",
-      washing: "WASHING",
-      assembling: "ASSEMBLING",
-      assemblingandpacking: "ASSEMBLING & PACKING",
-      packing: "PACKING",
-      manualpacking: "MANUAL PACKING",
+      molding: ["MOLDING", "NORTH SIDE"],
+      printing: ["PRINTING", "NORTH SIDE"],
+      printingandassembling: ["PRINTING & ASSEMBLING", "NORTH SIDE"],
+      washing: ["WASHING", "NORTH SIDE"],
+      assembling: ["ASSEMBLING", "NORTH SIDE"],
+      assemblingandpacking: ["ASSEMBLING & PACKING", "NORTH SIDE"],
+      packing: ["PACKING", "NORTH SIDE"],
+      manualpacking: ["MANUAL PACKING", "NORTH SIDE"],
+      southmolding: ["MOLDING", "SOUTH SIDE"],
+      assemblingtips: ["ASSEMBLING TIP'S", "SOUTH SIDE"],
+      pounchedtubes: ["POUNCHED TUBES", "SOUTH SIDE"],
+      southpacking: ["PACKING", "SOUTH SIDE"],
+      southmanualpacking: ["MANUAL PACKING", "SOUTH SIDE"],
     }
 
     const Connection = await DatabaseConnection()
     const OEESCollection = Connection.Database.collection("oees")
-    const OEES = await OEESCollection.find({ "OEEDATE": NewOEE(), "PROCESS": ResolveParam[process] }).project({ "_id": 0 }).toArray()
+    const OEES = await OEESCollection.find({ "OEEDATE": NewOEE(), "PROCESS": ResolveParam[process][0] }).project({ "_id": 0 }).toArray()
 
     res.status(200).json({
       OEES

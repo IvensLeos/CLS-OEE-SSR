@@ -33,16 +33,6 @@ const CaptureProduction = () => {
                 <Item DropdownItem href="/capture/data/production/southpacking">Packing</Item>
                 <Item DropdownItem href="/capture/data/production/southmanualpacking">Manual Packing</Item>
               </td>
-              <td>
-                <Header>South Side</Header>
-                <Item DropdownItem href="/capture/data/production/southmolding">Molding</Item>
-                <Divider />
-                <Item DropdownItem href="/capture/data/production/assemblingtips">Assembling Tip&apos;s</Item>
-                <Item DropdownItem href="/capture/data/production/pounchedtubes">Pounched Tubes</Item>
-                <Divider />
-                <Item DropdownItem href="/capture/data/production/southpacking">Packing</Item>
-                <Item DropdownItem href="/capture/data/production/southmanualpacking">Manual Packing</Item>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -57,31 +47,3 @@ const CaptureProduction = () => {
 }
 
 export default CaptureProduction
-
-{/* <tbody>
-  <tr>
-    <td>
-      <Header>North Side</Header>
-      <Item DropdownItem href="/capture/data/molding">Molding</Item>
-      <Divider />
-      <Item DropdownItem href="/capture/data/printing">Printing</Item>
-      <Item DropdownItem href="/capture/data/printingandassembling">Printing &amp; Assembling</Item>
-      <Item DropdownItem href="/capture/data/washing">Washing</Item>
-      <Item DropdownItem href="/capture/data/assembling">Assembling</Item>
-      <Item DropdownItem href="/capture/data/assemblingandpacking">Assembling &amp; Packing</Item>
-      <Divider />
-      <Item DropdownItem href="/capture/data/packing">Packing</Item>
-      <Item DropdownItem href="/capture/data/manualpacking">Manual Packing</Item>
-    </td>
-    <td>
-      <Header>South Side</Header>
-      <Item DropdownItem href="/capture/data/southmolding">Molding</Item>
-      <Divider />
-      <Item DropdownItem href="/capture/data/assemblingtips">Assembling Tip&apos;s</Item>
-      <Item DropdownItem href="/capture/data/pounchedtubes">Pounched Tubes</Item>
-      <Divider />
-      <Item DropdownItem href="/capture/data/southpacking">Packing</Item>
-      <Item DropdownItem href="/capture/data/southmanualpacking">Manual Packing</Item>
-    </td>
-  </tr>
-</tbody> */}

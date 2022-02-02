@@ -16,7 +16,10 @@ export const getServerSideProps = async ({ params }) => {
     beaker: "BEAKER",
     reservoir: "RESERVOIR",
     ctscorning: "CT'S CORNING",
-    ctsfalcon: "CT'S FALCON"
+    ctsfalcon: "CT'S FALCON",
+    roundbottom: "ROUND BOTTOM",
+    genomics: "GENOMICS",
+    buyouts: "BUYOUTS"
   }
 
   return {

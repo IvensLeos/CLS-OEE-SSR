@@ -27,7 +27,7 @@ const DashboardGrid = ({ OEES, Header }) => {
 
   useEffect(() => {
     (async () => {
-      const NumericTypePluggin = await import("@revolist/revogrid-column-numeral")
+      const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${57 + (OEES.length * 27)}px`
       Grid.current.style.alignItems = "center"
@@ -35,8 +35,8 @@ const DashboardGrid = ({ OEES, Header }) => {
       Grid.current.resize = true
       Grid.current.range = true
       Grid.current.columnTypes = {
-        numeric: new NumericTypePluggin.default("0,0"),
-        decimal: new NumericTypePluggin.default("0,0.[00]")
+        numeric: new NumericTypePlugin.default("0,0"),
+        decimal: new NumericTypePlugin.default("0,0.[00]")
       }
       Grid.current.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
@@ -63,6 +63,9 @@ const DashboardGrid = ({ OEES, Header }) => {
       case "RESERVOIR": Router.push("/review/data/production/reservoir"); break
       case "CT'S CORNING": Router.push("/review/data/production/ctscorning"); break
       case "CT'S FALCON": Router.push("/review/data/production/ctsfalcon"); break
+      case "ROUND BOTTOM": Router.push("/review/data/production/roundbottom"); break
+      case "GENOMICS": Router.push("/review/data/production/genomics"); break
+      case "BUYOUTS": Router.push("/review/data/production/buyouts"); break
     }
   }
 
