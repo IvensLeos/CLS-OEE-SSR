@@ -12,11 +12,11 @@ export default async function handler(req, res) {
     assemblingandpacking: ["ASSEMBLING & PACKING", "NORTH SIDE"],
     packing: ["PACKING", "NORTH SIDE"],
     manualpacking: ["MANUAL PACKING", "NORTH SIDE"],
-    southmolding: ["MOLDING", "SOUTH SIDE"],
-    assemblingtips: ["ASSEMBLING TIP'S", "SOUTH SIDE"],
-    pounchedtubes: ["POUNCHED TUBES", "SOUTH SIDE"],
-    southpacking: ["PACKING", "SOUTH SIDE"],
-    southmanualpacking: ["MANUAL PACKING", "SOUTH SIDE"],
+    southmoldingQ1: ["MOLDING Q1", "SOUTH SIDE"],
+    southmoldingQ2: ["MOLDING Q2", "SOUTH SIDE"],
+    southmoldingQ3: ["MOLDING Q3", "SOUTH SIDE"],
+    southmoldingQ4: ["MOLDING Q4", "SOUTH SIDE"],
+    southpadprinting: ["PAD PRINTING", "SOUTH SIDE"],
   }
 
   const Connection = await DatabaseConnection()

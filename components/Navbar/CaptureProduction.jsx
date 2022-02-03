@@ -25,13 +25,12 @@ const CaptureProduction = () => {
               </td>
               <td>
                 <Header>South Side</Header>
-                <Item DropdownItem href="/capture/data/production/southmolding">Molding</Item>
+                <Item DropdownItem href="/capture/data/production/southmoldingQ1">Molding Q1</Item>
+                <Item DropdownItem href="/capture/data/production/southmoldingQ2">Molding Q2</Item>
+                <Item DropdownItem href="/capture/data/production/southmoldingQ3">Molding Q3</Item>
+                <Item DropdownItem href="/capture/data/production/southmoldingQ4">Molding Q4</Item>
                 <Divider />
-                <Item DropdownItem href="/capture/data/production/assemblingtips">Assembling Tip&apos;s</Item>
-                <Item DropdownItem href="/capture/data/production/pounchedtubes">Pounched Tubes</Item>
-                <Divider />
-                <Item DropdownItem href="/capture/data/production/southpacking">Packing</Item>
-                <Item DropdownItem href="/capture/data/production/southmanualpacking">Manual Packing</Item>
+                <Item DropdownItem href="/capture/data/production/southpadprinting">Pad Printing</Item>
               </td>
             </tr>
           </tbody>
