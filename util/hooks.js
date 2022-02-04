@@ -1,24 +1,18 @@
-// export const Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-// export const Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-export const Day1 = new Date(Date.now() - 115200000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-export const Day2 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+export const Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
+export const Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
 
 export const NewGTE = () => {
-  let Day1 = new Date(Date.now() - 115200000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // console.log({Day1})
+  let Day1 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   return new Date(Day1 + " 08:00:00 AM UTC")
 }
 
 export const NewLT = () => {
-  let Day2 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // console.log({Day2})
+  let Day2 = new Date(Date.now() + 57600000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   return new Date(Day2 + " 08:00:00 AM UTC")
 }
 
-
 export const NewOEE = () => {
-  let Day3 = new Date(Date.now() - 115200000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
-  // console.log({Day3})
+  let Day3 = new Date(Date.now() - 28800000).toLocaleDateString("en-US", { timeZone: "America/Chicago" })
   return new Date(Day3 + " 00:00:00 AM UTC")
 }
 
