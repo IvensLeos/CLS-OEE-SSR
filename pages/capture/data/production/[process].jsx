@@ -32,12 +32,12 @@ export const getServerSideProps = async ({ params }) => {
     southmoldingQ4: ["MOLDING Q4", "SOUTH SIDE"],
     southpadprinting: ["PAD PRINTING", "SOUTH SIDE"],
     southassemblingrb: ["ASSEMBLING RB", "SOUTH SIDE"],
+    southassemblingandpackingrb: ["ASSEMBLING & PACKING RB", "SOUTH SIDE"],
     southmanualpackingrb: ["MANUAL PACKING RB", "SOUTH SIDE"],
     southmoldingrb: ["MOLDING RB", "SOUTH SIDE"],
     southpackingrb: ["PACKING RB", "SOUTH SIDE"],
     southprintingrb: ["PRINTING RB", "SOUTH SIDE"],
   }
-
   return {
     props: {
       MACHINES: Machines.MACHINES,

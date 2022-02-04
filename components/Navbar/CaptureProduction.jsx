@@ -29,6 +29,7 @@ const CaptureProduction = () => {
                 <Divider />
                 <Item DropdownItem href="/capture/data/production/southprintingrb">Printing RB</Item>
                 <Item DropdownItem href="/capture/data/production/southassemblingrb">Assembling RB</Item>
+                <Item DropdownItem href="/capture/data/production/southassemblingandpackingrb">Assembling &amp; Packing RB</Item>
                 <Divider />
                 <Item DropdownItem href="/capture/data/production/southpackingrb">Packing RB</Item>
                 <Item DropdownItem href="/capture/data/production/southmanualpackingrb">Manual Packing RB</Item>
