@@ -38,6 +38,11 @@ export const getServerSideProps = async ({ params }) => {
         { Area: ResolveParam[Area], Process: "MOLDING Q3", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q3") },
         { Area: ResolveParam[Area], Process: "MOLDING Q4", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q4") },
         { Area: ResolveParam[Area], Process: "PAD PRINTING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PAD PRINTING") },
+        { Area: ResolveParam[Area], Process: "ASSEMBLING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "ASSEMBLING RB") },
+        { Area: ResolveParam[Area], Process: "MANUAL PACKING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MANUAL PACKING RB") },
+        { Area: ResolveParam[Area], Process: "MOLDING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING RB") },
+        { Area: ResolveParam[Area], Process: "PACKING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PACKING RB") },
+        { Area: ResolveParam[Area], Process: "PRINTING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PRINTING RB") },
       ]
     }
   }

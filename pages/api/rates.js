@@ -17,6 +17,11 @@ export default async function handler(req, res) {
     southmoldingQ3: ["MOLDING Q3", "SOUTH SIDE"],
     southmoldingQ4: ["MOLDING Q4", "SOUTH SIDE"],
     southpadprinting: ["PAD PRINTING", "SOUTH SIDE"],
+    southassemblingrb: ["ASSEMBLING RB", "SOUTH SIDE"],
+    southmanualpackingrb: ["MANUAL PACKING RB", "SOUTH SIDE"],
+    southmoldingrb: ["MOLDING RB", "SOUTH SIDE"],
+    southpackingrb: ["PACKING RB", "SOUTH SIDE"],
+    southprintingrb: ["PRINTING RB", "SOUTH SIDE"],
   }
 
   const Connection = await DatabaseConnection()
