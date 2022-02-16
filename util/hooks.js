@@ -43,7 +43,9 @@ export const GenerateAggregation = (GROUP_ID, MATCH_ROOT_AREA) => {
     {
       $group: {
         "_id": GROUP_ID,
+        "ROOT_PROCESS": { $first: "$ROOT_PROCESS" },
         "PROCESS": { $first: "$PROCESS" },
+        "ROOT_AREA": { $first: "$ROOT_AREA" },
         "ITEM": { $last: '$ITEM' },
         "RATE": { $sum: '$RATE' },
         "PRODUCED": { $sum: '$PRODUCED' },

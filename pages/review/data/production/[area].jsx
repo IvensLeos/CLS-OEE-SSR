@@ -19,30 +19,39 @@ export const getServerSideProps = async ({ params }) => {
     ctsfalcon: "CT'S FALCON",
     roundbottom: "ROUND BOTTOM",
     genomics: "GENOMICS",
-    buyouts: "BUYOUTS"
+    buyouts: "BUYOUTS",
+    molding: "MOLDING",
+    printing: "PRINTING",
+    printingandassembling: "PRINTING & ASSEMBLING",
+    washing: "WASHING",
+    assembling: "ASSEMBLING",
+    assemblingandpacking: "ASSEMBLING & PACKING", 
+    packing: "PACKING",
+    manualpacking: "MANUAL PACKING"
   }
 
   return {
     props: {
       Params: [
-        { Area: ResolveParam[Area], Process: "MOLDING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING") },
-        { Area: ResolveParam[Area], Process: "PRINTING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PRINTING") },
-        { Area: ResolveParam[Area], Process: "PRINTING & ASSEMBLING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PRINTING & ASSEMBLING") },
-        { Area: ResolveParam[Area], Process: "WASHING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "WASHING") },
-        { Area: ResolveParam[Area], Process: "ASSEMBLING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "ASSEMBLING") },
-        { Area: ResolveParam[Area], Process: "ASSEMBLING & PACKING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "ASSEMBLING & PACKING") },
-        { Area: ResolveParam[Area], Process: "PACKING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PACKING") },
-        { Area: ResolveParam[Area], Process: "MANUAL PACKING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MANUAL PACKING") },
-        { Area: ResolveParam[Area], Process: "MOLDING Q1", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q1") },
-        { Area: ResolveParam[Area], Process: "MOLDING Q2", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q2") },
-        { Area: ResolveParam[Area], Process: "MOLDING Q3", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q3") },
-        { Area: ResolveParam[Area], Process: "MOLDING Q4", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING Q4") },
-        { Area: ResolveParam[Area], Process: "PAD PRINTING", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PAD PRINTING") },
-        { Area: ResolveParam[Area], Process: "ASSEMBLING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "ASSEMBLING RB") },
-        { Area: ResolveParam[Area], Process: "MANUAL PACKING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MANUAL PACKING RB") },
-        { Area: ResolveParam[Area], Process: "MOLDING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "MOLDING RB") },
-        { Area: ResolveParam[Area], Process: "PACKING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PACKING RB") },
-        { Area: ResolveParam[Area], Process: "PRINTING RB", Data: OEES?.filter(({ PROCESS }) => PROCESS === "PRINTING RB") },
+        { Area: ResolveParam[Area], Process: "MOLDING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING") },
+        { Area: ResolveParam[Area], Process: "PRINTING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PRINTING") },
+        { Area: ResolveParam[Area], Process: "PRINTING & ASSEMBLING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PRINTING & ASSEMBLING") },
+        { Area: ResolveParam[Area], Process: "WASHING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "WASHING") },
+        { Area: ResolveParam[Area], Process: "ASSEMBLING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "ASSEMBLING") },
+        { Area: ResolveParam[Area], Process: "ASSEMBLING & PACKING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "ASSEMBLING & PACKING") },
+        { Area: ResolveParam[Area], Process: "PACKING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PACKING") },
+        { Area: ResolveParam[Area], Process: "MANUAL PACKING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MANUAL PACKING") },
+        { Area: ResolveParam[Area], Process: "MOLDING Q1", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING Q1") },
+        { Area: ResolveParam[Area], Process: "MOLDING Q2", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING Q2") },
+        { Area: ResolveParam[Area], Process: "MOLDING Q3", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING Q3") },
+        { Area: ResolveParam[Area], Process: "MOLDING Q4", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING Q4") },
+        { Area: ResolveParam[Area], Process: "PAD PRINTING", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PAD PRINTING") },
+        { Area: ResolveParam[Area], Process: "ASSEMBLING RB", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "ASSEMBLING RB") },
+        { Area: ResolveParam[Area], Process: "MANUAL PACKING RB", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MANUAL PACKING RB") },
+        { Area: ResolveParam[Area], Process: "MOLDING RB", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "MOLDING RB") },
+        { Area: ResolveParam[Area], Process: "PACKING RB", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PACKING RB") },
+        { Area: ResolveParam[Area], Process: "PRINTING RB", Data: OEES?.filter(({ PROCESS, ROOT_AREA }) => ROOT_AREA === ResolveParam[Area] & PROCESS === "PRINTING RB") },
+        { Area: "ALL PLANT", Process: ResolveParam[Area], Data: OEES?.filter(({ ROOT_PROCESS }) => ROOT_PROCESS === ResolveParam[Area]) },
       ]
     }
   }

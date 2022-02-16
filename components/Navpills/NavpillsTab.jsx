@@ -1,6 +1,6 @@
 import CaptureGrid from "../Revogrid/CaptureGrid"
 
-const NavpillsTab = ({ Machines, Process, FailureCodes, ScrapCodes, Rates, ServerData }) => {
+const NavpillsTab = ({ Machines, RootProcess, Process, FailureCodes, ScrapCodes, Rates, ServerData }) => {
   const FormatName = (Name) => Name.replace("'", "").replace("-", "").split(" ").join("")
 
   return (
@@ -18,7 +18,7 @@ const NavpillsTab = ({ Machines, Process, FailureCodes, ScrapCodes, Rates, Serve
         {Machines.map(({ MACHINE_NAME }, I) => {
           return (
             <div key={`${MACHINE_NAME}-${I}`} className={`tab-pane fade ${I === 0 && "show active"}`} id={`${FormatName(MACHINE_NAME)}`} role="tabpanel" aria-labelledby={`${FormatName(MACHINE_NAME)}-${I}`} >
-              <CaptureGrid MACHINE_NAME={MACHINE_NAME} PROCESS={Process} FAILURECODES={FailureCodes} SCRAPCODES={ScrapCodes} RATES={Rates} SERVERDATA={ServerData} />
+              <CaptureGrid MACHINE_NAME={MACHINE_NAME} ROOT_PROCESS={RootProcess} PROCESS={Process} FAILURECODES={FailureCodes} SCRAPCODES={ScrapCodes} RATES={Rates} SERVERDATA={ServerData} />
             </div>
           )
         })}

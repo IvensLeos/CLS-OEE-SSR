@@ -4,7 +4,7 @@ import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1, Day2, Calculate } from "../../util/hooks"
 import { useRouter } from "next/router"
 
-const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, SERVERDATA }) => {
+const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPCODES, RATES, SERVERDATA }) => {
   let Process = useRouter().query.process
   let Grid = useRef()
   let Columns, Data
@@ -146,7 +146,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
       else if (Data[rowIndex].TIME_LOST == 0 && Data[rowIndex].TIME_LOST_COMMENT) Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "ERROR" }
       else if (!ROOT_AREA) Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "ERROR" }
       else Data[rowIndex] = { ...Data[rowIndex], ROWCLASS: "OK" }
-      UPDATEDATA = { ...Data[rowIndex], IDENTIFIER, ROOT_AREA, PROCESS: PROCESS2, RATE, PRODUCED, SCRAP, TIME_LOST }
+      UPDATEDATA = { ...Data[rowIndex], IDENTIFIER, ROOT_AREA, ROOT_PROCESS, PROCESS: PROCESS2, RATE, PRODUCED, SCRAP, TIME_LOST }
       InsertOrUpdateOEE(UPDATEDATA)
     }
     // For Range Cell Changed
@@ -167,7 +167,7 @@ const CaptureGrid = ({ MACHINE_NAME, PROCESS, FAILURECODES, SCRAPCODES, RATES, S
         else if (Data[model].TIME_LOST == 0 && Data[model].TIME_LOST_COMMENT) Data[model] = { ...Data[model], ROWCLASS: "ERROR" }
         else if (!ROOT_AREA) Data[model] = { ...Data[model], ROWCLASS: "ERROR" }
         else Data[model] = { ...Data[model], ROWCLASS: "OK" }
-        UPDATEDATA = { ...Data[model], IDENTIFIER, ROOT_AREA, PROCESS: PROCESS2, RATE, PRODUCED, SCRAP, TIME_LOST }
+        UPDATEDATA = { ...Data[model], IDENTIFIER, ROOT_AREA, ROOT_PROCESS, PROCESS: PROCESS2, RATE, PRODUCED, SCRAP, TIME_LOST }
         InsertOrUpdateOEE(UPDATEDATA)
       }
     }

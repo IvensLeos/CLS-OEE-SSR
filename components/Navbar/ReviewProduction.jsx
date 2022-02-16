@@ -32,6 +32,19 @@ const ReviewProduction = () => {
                 <Item DropdownItem href="/review/data/production/genomics">Genomics</Item>
                 <Item DropdownItem href="/review/data/production/buyouts">Buyouts</Item>
               </td>
+              <td>
+                <Header>Production Process</Header>
+                <Item DropdownItem href="/review/data/production/molding">Molding</Item>
+                <Divider />
+                <Item DropdownItem href="/review/data/production/printing">Printing</Item>
+                <Item DropdownItem href="/review/data/production/printingandassembling">Printing &amp; Assembling</Item>
+                <Item DropdownItem href="/review/data/production/washing">Washing</Item>
+                <Item DropdownItem href="/review/data/production/assembling">Assembling</Item>
+                <Item DropdownItem href="/review/data/production/assemblingandpacking">Assembling &amp; Packing</Item>
+                <Divider />
+                <Item DropdownItem href="/review/data/production/packing">Packing</Item>
+                <Item DropdownItem href="/review/data/production/manualpacking">Manual Packing</Item>
+              </td>
             </tr>
           </tbody>
         </table>

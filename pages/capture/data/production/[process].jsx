@@ -18,30 +18,32 @@ export const getServerSideProps = async ({ params }) => {
   }).then(r => r.json())
 
   const ResolveParam = {
-    molding: ["MOLDING", "NORTH SIDE"],
-    printing: ["PRINTING", "NORTH SIDE"],
-    printingandassembling: ["PRINTING & ASSEMBLING", "NORTH SIDE"],
-    washing: ["WASHING", "NORTH SIDE"],
-    assembling: ["ASSEMBLING", "NORTH SIDE"],
-    assemblingandpacking: ["ASSEMBLING & PACKING", "NORTH SIDE"],
-    packing: ["PACKING", "NORTH SIDE"],
-    manualpacking: ["MANUAL PACKING", "NORTH SIDE"],
-    southmoldingQ1: ["MOLDING Q1", "SOUTH SIDE"],
-    southmoldingQ2: ["MOLDING Q2", "SOUTH SIDE"],
-    southmoldingQ3: ["MOLDING Q3", "SOUTH SIDE"],
-    southmoldingQ4: ["MOLDING Q4", "SOUTH SIDE"],
-    southpadprinting: ["PAD PRINTING", "SOUTH SIDE"],
-    southassemblingrb: ["ASSEMBLING RB", "SOUTH SIDE"],
-    southassemblingandpackingrb: ["ASSEMBLING & PACKING RB", "SOUTH SIDE"],
-    southmanualpackingrb: ["MANUAL PACKING RB", "SOUTH SIDE"],
-    southmoldingrb: ["MOLDING RB", "SOUTH SIDE"],
-    southpackingrb: ["PACKING RB", "SOUTH SIDE"],
-    southprintingrb: ["PRINTING RB", "SOUTH SIDE"],
+    molding: ["MOLDING", "NORTH SIDE", "MOLDING"],
+    printing: ["PRINTING", "NORTH SIDE", "PRINTING"],
+    printingandassembling: ["PRINTING & ASSEMBLING", "NORTH SIDE", "PRINTING & ASSEMBLING"],
+    washing: ["WASHING", "NORTH SIDE", "WASHING"],
+    assembling: ["ASSEMBLING", "NORTH SIDE", "ASSEMBLING"],
+    assemblingandpacking: ["ASSEMBLING & PACKING", "NORTH SIDE", "ASSEMBLING & PACKING"],
+    packing: ["PACKING", "NORTH SIDE", "PACKING"],
+    manualpacking: ["MANUAL PACKING", "NORTH SIDE", "MANUAL PACKING"],
+    southmoldingQ1: ["MOLDING Q1", "SOUTH SIDE", "MOLDING"],
+    southmoldingQ2: ["MOLDING Q2", "SOUTH SIDE", "MOLDING"],
+    southmoldingQ3: ["MOLDING Q3", "SOUTH SIDE", "MOLDING"],
+    southmoldingQ4: ["MOLDING Q4", "SOUTH SIDE", "MOLDING"],
+    southpadprinting: ["PAD PRINTING", "SOUTH SIDE", "PRINTING"],
+    southassemblingrb: ["ASSEMBLING RB", "SOUTH SIDE", "ASSEMBLING"],
+    southassemblingandpackingrb: ["ASSEMBLING & PACKING RB", "SOUTH SIDE", "ASSEMBLING & PACKING"],
+    southmanualpackingrb: ["MANUAL PACKING RB", "SOUTH SIDE", "MANUAL PACKING"],
+    southmoldingrb: ["MOLDING RB", "SOUTH SIDE", "MOLDING"],
+    southpackingrb: ["PACKING RB", "SOUTH SIDE", "PACKING"],
+    southprintingrb: ["PRINTING RB", "SOUTH SIDE", "PRINTING"],
   }
+  
   return {
     props: {
       MACHINES: Machines.MACHINES,
       PROCESS: ResolveParam[Process][0],
+      ROOT_PROCESS: ResolveParam[Process][2],
       OEES: Oees.OEES,
       FAILURECODES: FailureCodes.FAILURECODES,
       SCRAPCODES: ScrapCodes.SCRAPCODES,
@@ -50,11 +52,11 @@ export const getServerSideProps = async ({ params }) => {
   }
 }
 
-const CaptureDataProcess = ({ MACHINES, PROCESS, OEES, FAILURECODES, SCRAPCODES, RATES }) => {
+const CaptureDataProcess = ({ MACHINES, ROOT_PROCESS, PROCESS, OEES, FAILURECODES, SCRAPCODES, RATES }) => {
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
-      <NavpillsTab Machines={MACHINES} Process={PROCESS} ServerData={OEES} FailureCodes={FAILURECODES} ScrapCodes={SCRAPCODES} Rates={RATES} />
+      <NavpillsTab Machines={MACHINES} RootProcess={ROOT_PROCESS} Process={PROCESS} ServerData={OEES} FailureCodes={FAILURECODES} ScrapCodes={SCRAPCODES} Rates={RATES} />
     </>
   )
 }
