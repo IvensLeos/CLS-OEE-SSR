@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 
 import ExportToCsvButton from "./ExportToCsvButton"
+import ReviewHistoryButton from "./ReviewHistoryButton"
 import { Day1, Day2, Calculate } from "../../util/hooks"
 import { useRouter } from "next/router"
 
@@ -180,6 +181,7 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
           <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
             <div className="ExportButtonAligner">
               <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${MACHINE_NAME} HOUR BY HOUR REPORT`} />
+              <ReviewHistoryButton Machine={MACHINE_NAME}/>
             </div>
           </revo-grid>
         <div></div>
