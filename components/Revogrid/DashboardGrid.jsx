@@ -2,9 +2,10 @@ import { useRouter } from "next/router"
 import { useEffect, useRef } from "react"
 
 import ExportToCsvButton from "./ExportToCsvButton"
-import { Day1, Calculate } from "../../util/hooks"
+import { Day1, Calculate, Day2 } from "../../util/hooks"
 
 const DashboardGrid = ({ OEES, Header }) => {
+
   let Router = useRouter()
   let Grid = useRef()
   let Columns = [
