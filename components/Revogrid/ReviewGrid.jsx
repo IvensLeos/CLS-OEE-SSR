@@ -16,21 +16,21 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
 
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: "MACHINE", order: 'asc', size: 100, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
-    { prop: "ITEM", name: "ITEM", size: 100, readonly: true },
-    { prop: "RATE", name: "RATE (PS)", columnType: "numeric", size: 75, readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", size: 90, readonly: true },
-    { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", size: 75, readonly: true },
-    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 135, readonly: true },
-    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 187, readonly: true },
-    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 148, readonly: true },
-    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 161, readonly: true },
-    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 168, readonly: true },
-    { prop: "TAU", name: "TAU", size: 69, cellProperties: ({ model }) => { model.TAU = Calculate.TAU(model) }, readonly: true },
-    { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
-    { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
-    { prop: "P", name: "P", size: 69, cellProperties: ({ model }) => { model.P = Calculate.P(model) }, readonly: true },
-    { prop: "OEE", name: "OEE", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, readonly: true },
+    { prop: "ID", name: "MACHINE", order: 'asc', size: 155, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
+    { prop: "ITEM", name: "ITEM", readonly: true },
+    { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
+    { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
+    { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
+    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
+    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
+    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
+    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
+    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
+    { prop: "TAU", name: "TAU (%)", size: 69, cellProperties: ({ model }) => { model.TAU = Calculate.TAU(model) }, readonly: true },
+    { prop: "Q", name: "Q (%)", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
+    { prop: "A", name: "A (%)", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
+    { prop: "P", name: "P (%)", size: 69, cellProperties: ({ model }) => { model.P = Calculate.P(model) }, readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, readonly: true },
   ]
   let Data = [...OEES]
 
@@ -39,7 +39,6 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${61 + (Data.length * 27)}px`
-      Grid.current.style.alignItems = "center"
 
       Grid.current.resize = true
       Grid.current.range = true
@@ -58,7 +57,7 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       Grid.current.columns = Columns
       Grid.current.source = Data
       Grid.current.columns = Columns.map((Col) => {
-        Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
+        Col.columnTemplate = (createElement, column) => { return createElement('div', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
         return Col
       })
     })()
@@ -71,17 +70,21 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
         <div></div>
         <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonContainer">
-            <div className="Title">
+            <div className="CustomTitle">
               <h4>{Area} - {Process}</h4>
             </div>
-            <div className="Export">
-              <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
-            </div>
+            <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
           </div>
         </revo-grid>
         <div></div>
       </div>
       <style jsx>{`
+        :global(.CustomTitle) {
+          float: left;
+        }
+        :global(.CustomTitle > h4) {
+          margin: 0px;
+        }
         :global(.RootContainer) {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
@@ -89,18 +92,23 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1616px;
+          max-width: 1532px;
         }
-        :global(.Title) {
-          float: left !important;
-          margin-left: -807px;
-        }
-        :global(.Export) {
-          float: right !important;
-           margin-right: -807px;
+        :global(.ExportButtonAligner) {
+          min-width: 1532px;
         }
         :global(.rgCell) {
           text-align: center !important;
+        }
+        :global(.header-rgRow, .actual-rgRow) {
+          height: 28px !important;
+        }
+        :global(.header-content) {
+          align-self: flex-end !important;
+        }
+        :global(.header-content > div) {
+          white-space: pre-line !important;
+          line-height: normal !important;
         }
       `}</style>
     </>

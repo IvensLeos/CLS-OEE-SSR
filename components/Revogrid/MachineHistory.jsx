@@ -8,7 +8,7 @@ const MachineHistory = ({ OEES, Header }) => {
 
   let Columns = [
     { prop: "OEEDATE", name: "OEE DATE", size: 80, cellProperties: ({ model }) => { model.OEEDATE = new Date(model.OEEDATE).toLocaleDateString("en-US", { timeZone: "America/Chicago" }) }, readonly: true },
-    { prop: "_id", name: "MACHINE NAME", readonly: true },
+    { prop: "_id", name: "MACHINE NAME", size: 142, readonly: true },
     { prop: "ROOT_AREA", name: "AREA", readonly: true },
     { prop: "ITEM", name: "ITEM", readonly: true },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
@@ -33,7 +33,6 @@ const MachineHistory = ({ OEES, Header }) => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${59 + (OEES.length * 27)}px`
-      Grid.current.style.alignItems = "center"
 
       Grid.current.resize = true
       Grid.current.range = true
@@ -62,17 +61,21 @@ const MachineHistory = ({ OEES, Header }) => {
         <div></div>
         <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonAligner">
-            <div className="Title">
+            <div className="CustomTitle">
               <h4>{Header} - OEE HISTORY DATA</h4>
             </div>
-            <div className="Export">
-              <ExportToCsvButton Grid={Grid} FileName={`${Header} OEE HISTORY REPORT`} />
-            </div>
+            <ExportToCsvButton Grid={Grid} FileName={`${Header} OEE HISTORY REPORT`} />
           </div>
         </revo-grid>
         <div></div>
       </div>
       <style jsx>{`
+        :global(.CustomTitle) {
+          float: left;
+        }
+        :global(.CustomTitle > h4) {
+          margin: 0px;
+        }
         :global(.RootContainer) {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
@@ -80,15 +83,10 @@ const MachineHistory = ({ OEES, Header }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1616px;
+          max-width: 1667px;
         }
-        :global(.Title) {
-          float: left !important;
-          margin-left: -807px;
-        }
-        :global(.Export) {
-          float: right !important;
-           margin-right: -807px;
+        :global(.ExportButtonAligner) {
+          min-width: 1667px;
         }
         :global(.rgCell) {
           text-align: center !important;

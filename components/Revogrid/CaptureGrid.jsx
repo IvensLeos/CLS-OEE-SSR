@@ -12,7 +12,7 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
 
   Columns = [
     { prop: "DATETIME", name: "DATETIME", size: 199, readonly: true },
-    { prop: "MACHINE_NAME", name: "MACHINE", readonly: true },
+    { prop: "MACHINE_NAME", name: "MACHINE", size: 142, readonly: true },
     { prop: "ROOT_AREA", name: "AREA", cellProperties: ({ model }) => { model.ROOT_AREA = Get.Area(model?.ITEM) }, readonly: true },
     { prop: "ITEM", name: "ITEM" },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", cellProperties: ({ model }) => { model.RATE = Get.Rate(model?.ITEM, model?.TIME_LOST) }, readonly: true },
@@ -22,10 +22,10 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
     { prop: "TIME_LOST", name: "LOST TIME (MIN)", columnType: "numeric", cellProperties: ({ model }) => { model.TIME_LOST = Calculate.ParseInt(model.TIME_LOST) > 60 ? 60 : Calculate.ParseInt(model.TIME_LOST) } },
     { prop: "TIME_LOST_COMMENT", name: "LOST TIME CODE", columnType: "select", source: FAILURECODES },
     { prop: "COMMENTS", name: "COMMENTS" },
-    { prop: "Q", name: "Q", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, size: 69, readonly: true },
-    { prop: "A", name: "A", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A2(model) }, size: 69, readonly: true },
-    { prop: "P", name: "P", cellProperties: ({ model }) => { if (model.RATE === 0) { model.P = "100.00%" } else { model.P = Calculate.P(model) } }, size: 69, readonly: true },
-    { prop: "OEE", name: "OEE", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, size: 69, readonly: true },
+    { prop: "Q", name: "Q (%)", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, size: 69, readonly: true },
+    { prop: "A", name: "A (%)", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A2(model) }, size: 69, readonly: true },
+    { prop: "P", name: "P (%)", cellProperties: ({ model }) => { if (model.RATE === 0) { model.P = "100.00%" } else { model.P = Calculate.P(model) } }, size: 69, readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, size: 69, readonly: true },
   ]
 
   const Get = {
@@ -73,7 +73,6 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${57 + (Data.length * 27)}px`
-      Grid.current.style.alignItems = "center"
 
       Grid.current.resize = true
       Grid.current.range = true
@@ -92,7 +91,7 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
       Grid.current.rowClass = "ROWCLASS"
       Grid.current.columns = Columns.map((Col, Index) => {
         if (Index === 0) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
-        Col.columnTemplate = (createElement, column) => { return createElement('span', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
+        Col.columnTemplate = (createElement, column) => { return createElement('div', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
         return Col
       })
 
@@ -208,13 +207,23 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1396px;
+          max-width: 1517px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1475px;
+          min-width: 1517px;
         }
         :global(.rgCell) {
           text-align: center !important;
+        }
+        :global(.header-rgRow, .actual-rgRow) {
+          height: 28px !important;
+        }
+        :global(.header-content) {
+          align-self: flex-end !important;
+        }
+        :global(.header-content > div) {
+          white-space: pre-line !important;
+          line-height: normal !important;
         }
       `}</style>
     </>
