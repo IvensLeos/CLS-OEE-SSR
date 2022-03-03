@@ -1,5 +1,6 @@
 import CaptureProduction from "./CaptureProduction"
 import ReviewProduction from "./ReviewProduction"
+import ReviewOEE from "./ReviewOEE"
 import TogglerButton from "./TogglerButton"
 import Logo from "./Logo"
 import Item from "./Item"
@@ -15,6 +16,7 @@ const Navbar = () => {
             <Item href="/">Dashboard</Item>
             <CaptureProduction />
             <ReviewProduction />
+            {/* <ReviewOEE /> */}
           </ul>
         </div>
       </div>
