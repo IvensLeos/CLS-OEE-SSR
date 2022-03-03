@@ -47,7 +47,7 @@ const GraphMachineModal = () => {
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">{MachineData?.[0]?.ROOT_AREA} - {MachineData?.[0]?.PROCESS}: {MachineData?.[0]?.MACHINE_NAME} PRODUCTION CHART</h5>
+              <h5 className="modal-title" id="exampleModalLabel">{Machine} PRODUCTION CHART</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
             </div>
             <div className="modal-body">

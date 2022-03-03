@@ -18,6 +18,7 @@ const IndexPage = ({ BusinessOEE, ProcessOEE, PlantOEE }) => {
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/@revolist/revogrid@3.0.98/dist/revo-grid/revo-grid.js" strategy="afterInteractive" />
+      <br />
       <DashboardGrid OEES={BusinessOEE} Header="BUSINESS UNIT" />
       <DashboardGrid OEES={ProcessOEE} Header="PROCESS" />
       <DashboardGrid OEES={PlantOEE} Header="ALL PLANT" />

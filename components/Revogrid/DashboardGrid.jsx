@@ -31,7 +31,6 @@ const DashboardGrid = ({ OEES, Header }) => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${57 + (OEES.length * 27)}px`
-      Grid.current.style.alignItems = "center"
 
       Grid.current.resize = true
       Grid.current.range = true
@@ -72,7 +71,6 @@ const DashboardGrid = ({ OEES, Header }) => {
 
   return (
     <>
-      <br />
       <div className="RootContainer">
         <div></div>
         <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
@@ -82,6 +80,7 @@ const DashboardGrid = ({ OEES, Header }) => {
         </revo-grid>
         <div></div>
       </div>
+      <br />
       <style jsx>{`
         :global(.RootContainer) {
           display: grid;
