@@ -90,10 +90,10 @@ const DashboardGrid = ({ OEES, Header }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1420px;
+          max-width: 1489px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1420px;
+          min-width: 1489px;
         }
         :global(.rgCell) {
           text-align: center !important;
