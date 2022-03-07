@@ -9,7 +9,7 @@ const DashboardGrid = ({ OEES, Header }) => {
   let Router = useRouter()
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: Header, order: "asc", size: 175, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => RedirectTo(target.innerText)) }, props.model[props.prop]) } },
+    { prop: "ID", name: Header, order: "asc", size: 175, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn-outline-primary border-0 col-12 text-dark ID_Dash", onclick: (({ target }) => RedirectTo(target.innerText)) }, props.model[props.prop]) } },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
     { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
@@ -108,6 +108,9 @@ const DashboardGrid = ({ OEES, Header }) => {
         :global(.header-content > div) {
           white-space: pre-line !important;
           line-height: normal !important;
+        }
+        :global(.ID_Dash:hover) {
+          color: white !important;
         }
       `}</style>
     </>

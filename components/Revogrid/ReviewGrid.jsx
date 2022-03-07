@@ -16,7 +16,7 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
 
   let Grid = useRef()
   let Columns = [
-    { prop: "ID", name: "MACHINE", order: 'asc', size: 155, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn btn-link col-12 text-dark", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
+    { prop: "ID", name: "MACHINE", order: 'asc', size: 155, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn-outline-primary border-0 col-12 text-dark ID_Dash", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
     { prop: "ITEM", name: "ITEM", readonly: true },
     { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
@@ -111,6 +111,9 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
         :global(.header-content > div) {
           white-space: pre-line !important;
           line-height: normal !important;
+        }
+        :global(.ID_Dash:hover) {
+          color: white !important;
         }
       `}</style>
     </>

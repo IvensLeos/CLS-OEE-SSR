@@ -6,7 +6,7 @@ const MachineHistory = ({ OEES, Header }) => {
   let Grid = useRef()
 
   let Columns = [
-    { prop: "OEEDATE", name: "OEE DATE", size: 80, cellProperties: ({ model }) => { model.OEEDATE = new Date(model.OEEDATE).toLocaleDateString("en-US", { timeZone: "America/Chicago" }) }, readonly: true },
+    { prop: "OEEDATE", name: "OEE DATE", size: 80, cellProperties: ({ model }) => { model.OEEDATE = new Date(model.OEEDATE).toLocaleDateString("en-US", { timeZone: "Pacific/Kiritimati" }) }, readonly: true },
     { prop: "_id", name: "MACHINE NAME", size: 142, readonly: true },
     { prop: "ROOT_AREA", name: "AREA", readonly: true },
     { prop: "ITEM", name: "ITEM", readonly: true },
