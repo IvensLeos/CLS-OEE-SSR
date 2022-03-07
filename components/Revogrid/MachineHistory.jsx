@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react"
 
-import { PercentStyleForOEE } from "../../util/hooks"
 import ExportToCsvButton from "./ExportToCsvButton"
 
 const MachineHistory = ({ OEES, Header }) => {
@@ -19,11 +18,12 @@ const MachineHistory = ({ OEES, Header }) => {
     { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
     { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
     { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "TAU", name: "TAU (%)", size: 69, cellProperties: ({ model }) => { model.TAU = PercentStyleForOEE(model.TAU) }, readonly: true },
-    { prop: "Q", name: "Q (%)", size: 69, cellProperties: ({ model }) => { model.Q = PercentStyleForOEE(model.Q) }, readonly: true },
-    { prop: "A", name: "A (%)", size: 69, cellProperties: ({ model }) => { model.A = PercentStyleForOEE(model.A) }, readonly: true },
-    { prop: "P", name: "P (%)", size: 69, cellProperties: ({ model }) => { model.P = PercentStyleForOEE(model.P) }, readonly: true },
-    { prop: "OEE", name: "OEE (%)", size: 69, cellProperties: ({ model }) => { model.OEE = PercentStyleForOEE(model.OEE) }, readonly: true },
+    { prop: "TEEP", name: "TEEP (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "Q", name: "Q (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "A", name: "A (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "P", name: "P (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "U", name: "U (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 69, columnType: "percent", readonly: true },
   ]
 
   let Data = [...OEES]
@@ -38,7 +38,8 @@ const MachineHistory = ({ OEES, Header }) => {
       Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
-        decimal: new NumericTypePlugin.default("0,0.[00]")
+        decimal: new NumericTypePlugin.default("0,0.[00]"),
+        percent: new NumericTypePlugin.default("0.00%"),
       }
       Grid.current.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
@@ -83,10 +84,10 @@ const MachineHistory = ({ OEES, Header }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1667px;
+          max-width: 1736px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1667px;
+          min-width: 1736px;
         }
         :global(.rgCell) {
           text-align: center !important;

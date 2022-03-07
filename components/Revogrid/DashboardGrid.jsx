@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useEffect, useRef } from "react"
 
 import ExportToCsvButton from "./ExportToCsvButton"
-import { Day1, Calculate } from "../../util/hooks"
+import { Day1 } from "../../util/hooks"
 
 const DashboardGrid = ({ OEES, Header }) => {
 
@@ -18,12 +18,12 @@ const DashboardGrid = ({ OEES, Header }) => {
     { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
     { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
     { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "TEEP", name: "TEEP (%)", size: 69, cellProperties: ({ model }) => { model.TEEP = Calculate.TEEP(model) }, readonly: true },
-    { prop: "Q", name: "Q (%)", size: 69, cellProperties: ({ model }) => { model.Q = Calculate.Q(model) }, readonly: true },
-    { prop: "A", name: "A (%)", size: 69, cellProperties: ({ model }) => { model.A = Calculate.A(model) }, readonly: true },
-    { prop: "P", name: "P (%)", size: 69, cellProperties: ({ model }) => { model.P = Calculate.P(model) }, readonly: true },
-    { prop: "U", name: "U (%)", size: 69, cellProperties: ({ model }) => { model.U = Calculate.U(model) }, readonly: true },
-    { prop: "OEE", name: "OEE (%)", size: 69, cellProperties: ({ model }) => { model.OEE = Calculate.OEE(model) }, readonly: true },
+    { prop: "TEEP", name: "TEEP (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "Q", name: "Q (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "A", name: "A (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "P", name: "P (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "U", name: "U (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 69, columnType: "percent", readonly: true },
   ]
   let Data = [...OEES]
 
@@ -37,7 +37,8 @@ const DashboardGrid = ({ OEES, Header }) => {
       Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
-        decimal: new NumericTypePlugin.default("0,0.[00]")
+        decimal: new NumericTypePlugin.default("0,0.[00]"),
+        percent: new NumericTypePlugin.default("0.00%"),
       }
       Grid.current.autoSizeColumn = {
         mode: 'autoSizeOnTextOverlap ',
