@@ -18,20 +18,20 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
   let Columns = [
     { prop: "ID", name: "MACHINE", order: 'asc', size: 155, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn-outline-primary border-0 col-12 text-dark ID_Dash", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
     { prop: "ITEM", name: "ITEM", readonly: true },
-    { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
-    { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
-    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "TEEP", name: "TEEP (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "Q", name: "Q (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "A", name: "A (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "P", name: "P (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "U", name: "U (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "OEE", name: "OEE (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "RATE", size: 65, name: "RATE (PS)", columnType: "numeric", readonly: true },
+    { prop: "PRODUCED", size: 90, name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
+    { prop: "SCRAP", name: "SCRAP (EA)", size: 70, columnType: "numeric", readonly: true },
+    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 95, readonly: true },
+    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 115, readonly: true },
+    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 109, readonly: true },
+    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 121, readonly: true },
+    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 95, readonly: true },
+    { prop: "TEEP", name: "TEEP (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "Q", name: "Q (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "A", name: "A (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "P", name: "P (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "U", name: "U (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 55, columnType: "percent", readonly: true },
   ]
   let Data = [...OEES]
 
@@ -94,10 +94,10 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1601px;
+          max-width: 1379px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1601px;
+          min-width: 1379px;
         }
         :global(.rgCell) {
           text-align: center !important;

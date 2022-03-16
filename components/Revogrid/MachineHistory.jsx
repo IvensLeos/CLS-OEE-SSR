@@ -10,20 +10,20 @@ const MachineHistory = ({ OEES, Header }) => {
     { prop: "_id", name: "MACHINE NAME", size: 142, readonly: true },
     { prop: "ROOT_AREA", name: "AREA", readonly: true },
     { prop: "ITEM", name: "ITEM", readonly: true },
-    { prop: "RATE", name: "RATE (PS)", columnType: "numeric", readonly: true },
-    { prop: "PRODUCED", name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
-    { prop: "SCRAP", name: "SCRAP (EA)", columnType: "numeric", readonly: true },
-    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 120, readonly: true },
-    { prop: "TEEP", name: "TEEP (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "Q", name: "Q (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "A", name: "A (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "P", name: "P (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "U", name: "U (%)", size: 69, columnType: "percent", readonly: true },
-    { prop: "OEE", name: "OEE (%)", size: 69, columnType: "percent", readonly: true },
+    { prop: "RATE", name: "RATE (PS)", size: 65, columnType: "numeric", readonly: true },
+    { prop: "PRODUCED", name: "PRODUCED (EA)", size: 90, columnType: "numeric", readonly: true },
+    { prop: "SCRAP", name: "SCRAP (EA)", size: 70, columnType: "numeric", readonly: true },
+    { prop: "AVAILABLE_TIME", name: "AVAILABLE TIME (HRS)", columnType: "decimal", size: 95, readonly: true },
+    { prop: "PLANNED_AVAILABLE_TIME", name: "PLANNED AVAILABLE TIME (HRS)", columnType: "decimal", size: 115, readonly: true },
+    { prop: "PLANNED_DOWNTIME", name: "PLANNED DOWNTIME (HRS)", columnType: "decimal", size: 109, readonly: true },
+    { prop: "UNPLANNED_DOWNTIME", name: "UNPLANNED DOWNTIME (HRS)", columnType: "decimal", size: 121, readonly: true },
+    { prop: "REAL_AVAILABLE_TIME", name: "REAL AVAILABLE TIME (HRS)", columnType: "decimal", size: 95, readonly: true },
+    { prop: "TEEP", name: "TEEP (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "Q", name: "Q (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "A", name: "A (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "P", name: "P (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "U", name: "U (%)", size: 55, columnType: "percent", readonly: true },
+    { prop: "OEE", name: "OEE (%)", size: 55, columnType: "percent", readonly: true },
   ]
 
   let Data = [...OEES]
@@ -84,10 +84,10 @@ const MachineHistory = ({ OEES, Header }) => {
           text-align: center;
         }
         :global(.CustomGridClass) {
-          max-width: 1736px;
+          max-width: 1512px;
         }
         :global(.ExportButtonAligner) {
-          min-width: 1736px;
+          min-width: 1512px;
         }
         :global(.rgCell) {
           text-align: center !important;
