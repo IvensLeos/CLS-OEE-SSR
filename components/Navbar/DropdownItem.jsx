@@ -12,8 +12,8 @@ const DropdownItem = ({ children, Title, Path }) => {
         </ul>
       </li>
       <style jsx>{`
-        :global(.dropdown-menu) {
-          left: auto !important;
+        .dropdown-menu {
+          left: auto;
         }
       `}</style>
     </>

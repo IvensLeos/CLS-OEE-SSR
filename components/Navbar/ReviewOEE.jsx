@@ -21,8 +21,8 @@ const ReviewOEE = () => {
         </table>
       </DropdownItem>
       <style jsx>{`
-        :global(.ReviewOEETable) {
-          margin-bottom: -7px !important;
+        .table-bordered {
+          margin-bottom: -7px;
         }
       `}</style>
     </>

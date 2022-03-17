@@ -7,7 +7,7 @@ const ReviewProduction = () => {
   return (
     <>
       <DropdownItem Title="Review Production" Path="/review/data/production/">
-        <table className="table table-bordered ReviewProductionTable">
+        <table className="table table-bordered">
           <tbody>
             <tr>
               <td>
@@ -50,7 +50,7 @@ const ReviewProduction = () => {
         </table>
       </DropdownItem>
       <style jsx>{`
-        :global(.ReviewProductionTable) {
+        .table-bordered {
           margin-bottom: -7px !important;
         }
       `}</style>

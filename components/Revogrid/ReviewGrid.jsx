@@ -17,7 +17,7 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
   let Grid = useRef()
   let Columns = [
     { prop: "ID", name: "MACHINE", order: 'asc', size: 155, readonly: true, cellTemplate: (createElement, props) => { return createElement('button', { class: "btn btn-outline-primary border-0 col-12 text-dark ID_Dash", onclick: (({ target }) => OpenModal(target.innerText)) }, props.model[props.prop]) }  },
-    { prop: "ITEM", name: "ITEM", readonly: true },
+    { prop: "ITEM", name: "ITEM", size: 100, readonly: true },
     { prop: "RATE", size: 65, name: "RATE (PS)", columnType: "numeric", readonly: true },
     { prop: "PRODUCED", size: 90, name: "PRODUCED (EA)", columnType: "numeric", readonly: true },
     { prop: "SCRAP", name: "SCRAP (EA)", size: 70, columnType: "numeric", readonly: true },
@@ -40,22 +40,13 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${61 + (Data.length * 27)}px`
-
-      Grid.current.resize = true
       Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
         decimal: new NumericTypePlugin.default("0,0.[00]"),
         percent: new NumericTypePlugin.default("0.00%"),
       }
-      Grid.current.rowHeaders = {
-        size: 31
-      }
-      Grid.current.autoSizeColumn = {
-        mode: 'autoSizeOnTextOverlap ',
-        allColumns: true,
-        preciseSize: true
-      }
+      Grid.current.rowHeaders = { size: 31 }
       Grid.current.columns = Columns
       Grid.current.source = Data
       Grid.current.columns = Columns.map((Col) => {
@@ -69,7 +60,6 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
     <>
       <br />
       <div className="RootContainer">
-        <div></div>
         <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonContainer">
             <div className="CustomTitle">
@@ -78,42 +68,18 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
           </div>
         </revo-grid>
-        <div></div>
       </div>
       <style jsx>{`
-        :global(.CustomTitle) {
+        .RootContainer {
+          display: flex;
+          width: 1377px;
+          margin: 0px auto;
+        }
+        .CustomTitle {
           float: left;
         }
-        :global(.CustomTitle > h4) {
+        .CustomTitle > h4 {
           margin: 0px;
-        }
-        :global(.RootContainer) {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          align-content: center;
-          text-align: center;
-        }
-        :global(.CustomGridClass) {
-          max-width: 1379px;
-        }
-        :global(.ExportButtonAligner) {
-          min-width: 1379px;
-        }
-        :global(.rgCell) {
-          text-align: center !important;
-        }
-        :global(.header-rgRow, .actual-rgRow) {
-          height: 28px !important;
-        }
-        :global(.header-content) {
-          align-self: flex-end !important;
-        }
-        :global(.header-content > div) {
-          white-space: pre-line !important;
-          line-height: normal !important;
-        }
-        :global(.ID_Dash:hover) {
-          color: white !important;
         }
       `}</style>
     </>

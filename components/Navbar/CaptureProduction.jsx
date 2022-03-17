@@ -46,8 +46,8 @@ const CaptureProduction = () => {
         </table>
       </DropdownItem>
       <style jsx>{`
-        :global(.CaptureProductionTable) {
-          margin-bottom: -7px !important;
+        table {
+          margin-bottom: -7px;
         }
       `}</style>
     </>

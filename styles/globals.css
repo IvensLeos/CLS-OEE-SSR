@@ -7,6 +7,33 @@ body {
   margin: 0 !important;
 }
 
+/* REVOGRID CSS */
+revo-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.rgCell {
+  text-align: center !important;
+}
+
+.header-rgRow, .actual-rgRow {
+  height: 28px !important;
+}
+
+.header-content {
+  align-self: flex-end !important;
+}
+
+.header-content > div {
+  white-space: pre-line !important;
+  line-height: normal !important;
+}
+
 .temp-bg-range {
   display: block !important;
+}
+
+.ID_Dash:hover {
+  color: white !important;
 }

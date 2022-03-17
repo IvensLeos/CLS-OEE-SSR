@@ -176,16 +176,19 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
   return (
     <>
       <div className="RootContainer">
-        <div></div>
-          <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
-            <div className="ExportButtonAligner">
-              <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${MACHINE_NAME} HOUR BY HOUR REPORT`} />
-              <ReviewHistoryButton Machine={MACHINE_NAME}/>
-            </div>
-          </revo-grid>
-        <div></div>
+        <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
+          <div className="ExportButtonAligner">
+            <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${MACHINE_NAME} HOUR BY HOUR REPORT`} />
+            <ReviewHistoryButton Machine={MACHINE_NAME}/>
+          </div>
+        </revo-grid>
       </div>
       <style jsx>{`
+        .RootContainer {
+          display: flex;
+          width: 1503px;
+          margin: 0px auto;
+        }
         :global(.ERROR) {
           transition-property: background-color, color;
           transition-duration: 0.6s;
@@ -199,31 +202,6 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
         :global(.focused-rgRow) {
           background-color: white;
           color: black;
-        }
-        :global(.RootContainer) {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          align-content: center;
-          text-align: center;
-        }
-        :global(.CustomGridClass) {
-          max-width: 1502px;
-        }
-        :global(.ExportButtonAligner) {
-          min-width: 1502px;
-        }
-        :global(.rgCell) {
-          text-align: center !important;
-        }
-        :global(.header-rgRow, .actual-rgRow) {
-          height: 28px !important;
-        }
-        :global(.header-content) {
-          align-self: flex-end !important;
-        }
-        :global(.header-content > div) {
-          white-space: pre-line !important;
-          line-height: normal !important;
         }
       `}</style>
     </>

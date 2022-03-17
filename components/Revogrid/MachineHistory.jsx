@@ -59,7 +59,6 @@ const MachineHistory = ({ OEES, Header }) => {
     <>
       <br />
       <div className="RootContainer">
-        <div></div>
         <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
           <div className="ExportButtonAligner">
             <div className="CustomTitle">
@@ -68,39 +67,18 @@ const MachineHistory = ({ OEES, Header }) => {
             <ExportToCsvButton Grid={Grid} FileName={`${Header} OEE HISTORY REPORT`} />
           </div>
         </revo-grid>
-        <div></div>
       </div>
       <style jsx>{`
+        .RootContainer {
+          display: flex;
+          width: 1513px;
+          margin: 0px auto;
+        }
         :global(.CustomTitle) {
           float: left;
         }
         :global(.CustomTitle > h4) {
           margin: 0px;
-        }
-        :global(.RootContainer) {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          align-content: center;
-          text-align: center;
-        }
-        :global(.CustomGridClass) {
-          max-width: 1512px;
-        }
-        :global(.ExportButtonAligner) {
-          min-width: 1512px;
-        }
-        :global(.rgCell) {
-          text-align: center !important;
-        }
-        :global(.header-rgRow, .actual-rgRow) {
-          height: 28px !important;
-        }
-        :global(.header-content) {
-          align-self: flex-end !important;
-        }
-        :global(.header-content > div) {
-          white-space: pre-line !important;
-          line-height: normal !important;
         }
       `}</style>
     </>

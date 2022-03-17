@@ -1,5 +1,6 @@
 import CaptureProduction from "./CaptureProduction"
 import ReviewProduction from "./ReviewProduction"
+import TopLosses from "./TopLosses"
 import ReviewOEE from "./ReviewOEE"
 import TogglerButton from "./TogglerButton"
 import Logo from "./Logo"
@@ -16,6 +17,7 @@ const Navbar = () => {
             <Item href="/">Dashboard</Item>
             <CaptureProduction />
             <ReviewProduction />
+            {/* <TopLosses /> */}
             {/* <ReviewOEE /> */}
           </ul>
         </div>
