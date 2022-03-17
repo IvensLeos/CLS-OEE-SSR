@@ -13,6 +13,10 @@ revo-grid {
   justify-content: center;
 }
 
+revogr-scroll-virtual {
+  display: none;
+}
+
 .rgCell {
   text-align: center !important;
 }
