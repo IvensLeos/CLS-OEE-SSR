@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react"
 import ExportToCsvButton from "./ExportToCsvButton"
 import { Day1 } from "../../util/hooks"
 
-import { useAppContext } from "../Context/Context"
+import { useAppContext } from "../Context"
 
 const ReviewGrid = ({ OEES, Area, Process }) => {
   const { SetMachine } = useAppContext()
@@ -40,7 +40,7 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
       Grid.current.style.height = `${61 + (Data.length * 27)}px`
-      Grid.current.range = true
+
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
         decimal: new NumericTypePlugin.default("0,0.[00]"),
@@ -60,11 +60,9 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
     <>
       <br />
       <div className="RootContainer">
-        <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
-          <div className="ExportButtonContainer">
-            <div className="CustomTitle">
-              <h4>{Area} - {Process}</h4>
-            </div>
+        <revo-grid ref={Grid} exporting="true">
+          <div>
+            <h4 className="CustomTitle">{Area} - {Process}</h4>
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Area} ${Process} REPORT`} />
           </div>
         </revo-grid>
@@ -72,13 +70,11 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
       <style jsx>{`
         .RootContainer {
           display: flex;
-          width: 1377px;
+          width: 1376px;
           margin: 0px auto;
         }
         .CustomTitle {
           float: left;
-        }
-        .CustomTitle > h4 {
           margin: 0px;
         }
       `}</style>

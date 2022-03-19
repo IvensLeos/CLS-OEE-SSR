@@ -34,18 +34,12 @@ const MachineHistory = ({ OEES, Header }) => {
 
       Grid.current.style.height = `${59 + (OEES.length * 27)}px`
 
-      Grid.current.resize = true
       Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
         decimal: new NumericTypePlugin.default("0,0.[00]"),
         percent: new NumericTypePlugin.default("0.00%"),
       }
-      Grid.current.autoSizeColumn = {
-        mode: 'autoSizeOnTextOverlap ',
-        allColumns: true,
-        preciseSize: true
-      },
       Grid.current.columns = Columns
       Grid.current.source = Data
       Grid.current.columns = Columns.map((Col) => {
@@ -59,11 +53,9 @@ const MachineHistory = ({ OEES, Header }) => {
     <>
       <br />
       <div className="RootContainer">
-        <revo-grid ref={Grid} id={Header} className="CustomGridClass" exporting="true" autocomplete="true">
-          <div className="ExportButtonAligner">
-            <div className="CustomTitle">
-              <h4>{Header} - OEE HISTORY DATA</h4>
-            </div>
+        <revo-grid ref={Grid} id={Header} exporting="true">
+          <div>
+            <h4 className="CustomTitle">{Header} - OEE HISTORY DATA</h4>
             <ExportToCsvButton Grid={Grid} FileName={`${Header} OEE HISTORY REPORT`} />
           </div>
         </revo-grid>
@@ -74,10 +66,8 @@ const MachineHistory = ({ OEES, Header }) => {
           width: 1513px;
           margin: 0px auto;
         }
-        :global(.CustomTitle) {
+        .CustomTitle {
           float: left;
-        }
-        :global(.CustomTitle > h4) {
           margin: 0px;
         }
       `}</style>

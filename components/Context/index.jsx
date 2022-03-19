@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useMemo } from "react"
 const AppContext = createContext()
 
 export const ContextProvider = (props) => {
-  const [Machine, SetMachine] = useState("MOM-40")
+  const [Machine, SetMachine] = useState()
 
   const Value = useMemo(() => {
     return ({ Machine, SetMachine })

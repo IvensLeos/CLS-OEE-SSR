@@ -41,3 +41,15 @@ revogr-scroll-virtual {
 .ID_Dash:hover {
   color: white !important;
 }
+
+revogr-data > .focused-rgRow, .OK {
+  background-color: white;
+  color: black;
+}
+
+.ERROR {
+  transition-property: background-color, color;
+  transition-duration: 0.6s;
+  background-color: #EB5454;
+  color: white;
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useAppContext } from "../Context/Context"
+import { useAppContext } from "../Context"
 
 import MachineHistoryChart from "../ChartsJS/MachineHistoryChart"
 import { NewGTE } from "../../util/hooks"

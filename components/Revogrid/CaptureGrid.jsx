@@ -176,8 +176,8 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
   return (
     <>
       <div className="RootContainer">
-        <revo-grid ref={Grid} className="CustomGridClass" exporting="true" autocomplete="true">
-          <div className="ExportButtonAligner">
+        <revo-grid ref={Grid} exporting="true" autocomplete="true">
+          <div>
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${MACHINE_NAME} HOUR BY HOUR REPORT`} />
             <ReviewHistoryButton Machine={MACHINE_NAME}/>
           </div>
@@ -188,20 +188,6 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
           display: flex;
           width: 1503px;
           margin: 0px auto;
-        }
-        :global(.ERROR) {
-          transition-property: background-color, color;
-          transition-duration: 0.6s;
-          background-color: #EB5454;
-          color: white;
-        }
-        :global(.OK) {
-          background-color: white;
-          color: black;
-        }
-        :global(.focused-rgRow) {
-          background-color: white;
-          color: black;
         }
       `}</style>
     </>

@@ -33,17 +33,11 @@ const DashboardGrid = ({ OEES, Header }) => {
 
       Grid.current.style.height = `${57 + (OEES.length * 27)}px`
 
-      Grid.current.resize = true
       Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
         decimal: new NumericTypePlugin.default("0,0.[00]"),
         percent: new NumericTypePlugin.default("0.00%"),
-      }
-      Grid.current.autoSizeColumn = {
-        mode: 'autoSizeOnTextOverlap ',
-        allColumns: true,
-        preciseSize: true
       }
       Grid.current.columns = Columns
       Grid.current.source = Data
@@ -82,10 +76,10 @@ const DashboardGrid = ({ OEES, Header }) => {
   return (
     <>
       <div className="RootContainer">
-        <revo-grid ref={Grid} id={Header} exporting="true" autocomplete="true">
-          {/* <div className="ExportButtonAligner">
+        <revo-grid ref={Grid} id={Header} exporting="true">
+          <div>
             <ExportToCsvButton Grid={Grid} FileName={`${Day1} ${Header} REPORT`} />
-          </div> */}
+          </div>
         </revo-grid>
       </div>
       <br />

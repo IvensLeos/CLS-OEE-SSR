@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import Head from "next/head"
 import Layout from "../components/Layout"
 
-import { ContextProvider } from "../components/Context/Context"
+import { ContextProvider } from "../components/Context"
 import GraphMachineModal from "../components/Modal/GraphMachineModal"
 
 const App = ({ Component, pageProps })  => {
