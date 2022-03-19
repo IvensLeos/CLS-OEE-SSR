@@ -91,6 +91,7 @@ const CaptureGrid = ({ MACHINE_NAME, ROOT_PROCESS, PROCESS, FAILURECODES, SCRAPC
       Grid.current.rowClass = "ROWCLASS"
       Grid.current.columns = Columns.map((Col, Index) => {
         if (Index === 0) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
+        if (Index === 1) Col.cellProperties = () => { return { style: { 'font-weight': 'bold' } } }
         Col.columnTemplate = (createElement, column) => { return createElement('div', { style: { 'font-weight': 'bold', 'color': 'black' }, }, column.name) }
         return Col
       })

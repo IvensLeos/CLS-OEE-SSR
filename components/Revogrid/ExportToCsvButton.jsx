@@ -15,7 +15,7 @@ const ExportToCsvButton = ({ Grid, FileName }) => {
         <span> DOWNLOAD EXCEL CSV</span>
       </button>
       <style jsx>{`
-        :global(button) {
+        button {
           min-width: fit-content;
           float: right;
         }
