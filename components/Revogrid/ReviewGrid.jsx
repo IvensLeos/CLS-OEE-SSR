@@ -39,8 +39,9 @@ const ReviewGrid = ({ OEES, Area, Process }) => {
     (async () => {
       const NumericTypePlugin = await import("@revolist/revogrid-column-numeral")
 
-      Grid.current.style.height = `${61 + (Data.length * 27)}px`
+      Grid.current.style.height = `${55 + (Data.length * 27)}px`
 
+      Grid.current.range = true
       Grid.current.columnTypes = {
         numeric: new NumericTypePlugin.default("0,0"),
         decimal: new NumericTypePlugin.default("0,0.[00]"),
