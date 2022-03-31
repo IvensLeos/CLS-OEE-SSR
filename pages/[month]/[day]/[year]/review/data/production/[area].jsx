@@ -1,5 +1,5 @@
 import Script from "next/script"
-import ReviewGrid from "../../../../components/Revogrid/ReviewGrid"
+import ReviewGrid from "../../../../../../../components/Revogrid/ReviewGrid"
 
 export const getServerSideProps = async ({ params }) => {
   const Area = params.area

@@ -1,5 +1,5 @@
 import Script from "next/script"
-import MachineHistory from "../../../../components/Revogrid/MachineHistory"
+import MachineHistory from "../../../../../../../components/Revogrid/MachineHistory"
 
 export const getServerSideProps = async ({ params }) => {
   const Machine = params.machine

@@ -1,5 +1,5 @@
 import Script from "next/script"
-import NavpillsTab from "../../../../components/Navpills/NavpillsTab"
+import NavpillsTab from "../../../../../../../components/Navpills/NavpillsTab"
 
 export const getServerSideProps = async ({ params }) => {
   const Process = params.process

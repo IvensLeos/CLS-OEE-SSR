@@ -2,7 +2,7 @@ import Script from "next/script"
 
 export const getServerSideProps = async () => {
   const Data = await fetch(process.env.SITE_URL + "/api").then(r => r.json())
-  
+
   return {
     props: {
       BusinessOEE: Data.BusinessOEE,
